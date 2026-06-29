@@ -16,8 +16,6 @@
 
 /**
  * For supported payment methods, sets the language of the instruction page.
- * @export
- * @enum {string}
  */
 
 export enum Locale {

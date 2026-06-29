@@ -23,29 +23,9 @@ import type { PaymentDetailsOnlyCreditCards } from './payment-details-only-credi
 // @ts-ignore
 import type { ProcessingMerchant } from './processing-merchant';
 
-/**
- * 
- * @export
- * @interface CreateTokenRequest
- */
 export interface CreateTokenRequest {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateTokenRequest
-     */
     'currency'?: Currency;
-    /**
-     * 
-     * @type {PaymentDetailsOnlyCreditCards}
-     * @memberof CreateTokenRequest
-     */
     'payment_details': PaymentDetailsOnlyCreditCards;
-    /**
-     * 
-     * @type {ProcessingMerchant}
-     * @memberof CreateTokenRequest
-     */
     'platform_details'?: ProcessingMerchant;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@komoju/komoju-sdk",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "OpenAPI client for @komoju/komoju-sdk",
   "author": "KOMOJU Co., Ltd.",
   "repository": {

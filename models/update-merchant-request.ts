@@ -17,59 +17,14 @@
 // @ts-ignore
 import type { UpdateMerchantRequestExpirySettingsInner } from './update-merchant-request-expiry-settings-inner';
 
-/**
- * 
- * @export
- * @interface UpdateMerchantRequest
- */
 export interface UpdateMerchantRequest {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'payments_enabled'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'payouts_enabled'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'send_payment_instruction_email'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'send_payment_receipt_email'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'send_payment_reminder_email'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'send_payment_capture_email'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateMerchantRequest
-     */
     'send_payment_refund_email'?: boolean;
-    /**
-     * 
-     * @type {Array<UpdateMerchantRequestExpirySettingsInner>}
-     * @memberof UpdateMerchantRequest
-     */
     'expiry_settings'?: Array<UpdateMerchantRequestExpirySettingsInner>;
 }
 

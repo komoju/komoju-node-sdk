@@ -40,8 +40,7 @@ import type { PaymentType } from './payment-type';
 
 /**
  * @type CreateSessionRequest
- * @export
  */
-export type CreateSessionRequest = { mode: 'customer' } & CreateSessionRequestWithCustomerMode | { mode: 'customer_payment' } & CreateSessionRequestWithCustomerPaymentMode | { mode: 'payment' } & CreateSessionRequestWithPaymentMode;
+export type CreateSessionRequest = CreateSessionRequestWithCustomerMode | CreateSessionRequestWithCustomerPaymentMode | CreateSessionRequestWithPaymentMode;
 
 

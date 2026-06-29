@@ -15,6 +15,7 @@
 
 
 export * from './api/barcodes-api';
+export * from './api/chargebacks-api';
 export * from './api/disbursements-api';
 export * from './api/events-api';
 export * from './api/one-click-api';

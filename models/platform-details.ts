@@ -17,22 +17,13 @@
 // @ts-ignore
 import type { Submerchant } from './submerchant';
 
-/**
- * 
- * @export
- * @interface PlatformDetails
- */
 export interface PlatformDetails {
     /**
      * Array of submerchant split configurations for this platform payment.
-     * @type {Array<Submerchant>}
-     * @memberof PlatformDetails
      */
     'submerchants': Array<Submerchant>;
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof PlatformDetails
      */
     'processing_merchant_id'?: string;
 }

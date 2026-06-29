@@ -38,174 +38,95 @@ import type { ResponsePaymentDetailsAll } from './response-payment-details-all';
 // @ts-ignore
 import type { StatementDescriptor } from './statement-descriptor';
 
-/**
- * 
- * @export
- * @interface Payment
- */
 export interface Payment {
     /**
      * A unique 25-character alphanumeric payment identifier.
-     * @type {string}
-     * @memberof Payment
      */
     'id': string;
     /**
      * Resource name. Will always be `payment`.
-     * @type {string}
-     * @memberof Payment
      */
     'resource': PaymentResourceEnum;
-    /**
-     * 
-     * @type {PaymentStatus}
-     * @memberof Payment
-     */
     'status': PaymentStatus;
     /**
      * The payment amount before tax, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Payment
      */
     'amount': number;
     /**
      * The tax amount, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Payment
      */
     'tax': number;
     /**
      * Customer UUID if associated with a customer, otherwise null.
-     * @type {string}
-     * @memberof Payment
      */
     'customer': string | null;
     /**
      * Deadline by which the payment must be completed, or null.
-     * @type {string}
-     * @memberof Payment
      */
     'payment_deadline': string | null;
-    /**
-     * 
-     * @type {ResponsePaymentDetailsAll}
-     * @memberof Payment
-     */
     'payment_details': ResponsePaymentDetailsAll;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Payment
      */
     'payment_method_fee': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Payment
      */
     'total': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof Payment
-     */
     'currency': Currency;
     /**
      * A description for this payment. May be null if it\'s not set.
-     * @type {string}
-     * @memberof Payment
      */
     'description': string | null;
     /**
      * Timestamp when the payment was captured, or null if not yet captured.
-     * @type {string}
-     * @memberof Payment
      */
     'captured_at': string | null;
     /**
      * Merchant-assigned external order number for this payment.
-     * @type {string}
-     * @memberof Payment
      */
     'external_order_num': string | null;
     /**
      * Arbitrary key-value metadata attached at payment creation time.
-     * @type {object}
-     * @memberof Payment
      */
     'metadata': object;
     /**
      * Timestamp when the payment was created.
-     * @type {string}
-     * @memberof Payment
      */
     'created_at': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Payment
      */
     'amount_refunded': number;
-    /**
-     * 
-     * @type {Locale}
-     * @memberof Payment
-     */
     'locale': Locale;
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof Payment
      */
     'session': string;
     /**
      * Customer\'s family name.
-     * @type {string}
-     * @memberof Payment
      */
     'customer_family_name': string | null;
     /**
      * Customer\'s given name.
-     * @type {string}
-     * @memberof Payment
      */
     'customer_given_name': string | null;
     /**
      * Merchant Category Code used for this payment.
-     * @type {string}
-     * @memberof Payment
      */
     'mcc': string | null;
-    /**
-     * 
-     * @type {StatementDescriptor}
-     * @memberof Payment
-     */
     'statement_descriptor': StatementDescriptor;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof Payment
-     */
     'platform_details'?: PlatformDetails;
     /**
      * An array of refunds. Will be an empty array if there are no refunds.
-     * @type {Array<Refund>}
-     * @memberof Payment
      */
     'refunds': Array<Refund>;
     /**
      * An array of refund requests. Will be an empty array if there are no refund requests.
-     * @type {Array<RefundRequest>}
-     * @memberof Payment
      */
     'refund_requests': Array<RefundRequest>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentResourceEnum {
     Payment = 'payment'
 }

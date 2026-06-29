@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Disbursement } from './disbursement';
 
-/**
- * 
- * @export
- * @interface DisbursementList
- */
 export interface DisbursementList {
     /**
      * Resource type name, always \"disbursement_list\".
-     * @type {string}
-     * @memberof DisbursementList
      */
     'resource': string;
     /**
      * Array of disbursement objects for this page.
-     * @type {Array<Disbursement>}
-     * @memberof DisbursementList
      */
     'data': Array<Disbursement>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof DisbursementList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof DisbursementList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof DisbursementList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof DisbursementList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof DisbursementList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof DisbursementList
      */
     'last_page': number;
 }

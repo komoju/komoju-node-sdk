@@ -17,66 +17,38 @@
 // @ts-ignore
 import type { Event } from './event';
 
-/**
- * 
- * @export
- * @interface EventList
- */
 export interface EventList {
-    /**
-     * 
-     * @type {string}
-     * @memberof EventList
-     */
     'resource': EventListResourceEnum;
     /**
      * Array of event objects for this page.
-     * @type {Array<Event>}
-     * @memberof EventList
      */
     'data': Array<Event>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof EventList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof EventList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof EventList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof EventList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof EventList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof EventList
      */
     'last_page': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum EventListResourceEnum {
     List = 'list'
 }

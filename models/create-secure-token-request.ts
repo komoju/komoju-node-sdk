@@ -31,7 +31,6 @@ import type { ProcessingMerchant } from './processing-merchant';
 
 /**
  * @type CreateSecureTokenRequest
- * @export
  */
 export type CreateSecureTokenRequest = CreateSecureTokenRequestWithCustomer | CreateSecureTokenRequestWithPaymentDetails;
 

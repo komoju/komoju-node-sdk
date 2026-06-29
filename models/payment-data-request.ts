@@ -29,90 +29,39 @@ import type { PlatformDetails } from './platform-details';
 // @ts-ignore
 import type { StatementDescriptor } from './statement-descriptor';
 
-/**
- * 
- * @export
- * @interface PaymentDataRequest
- */
 export interface PaymentDataRequest {
     /**
      * Whether to capture the payment automatically on completion, or hold it for manual capture later.
-     * @type {string}
-     * @memberof PaymentDataRequest
      */
     'capture'?: PaymentDataRequestCaptureEnum;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof PaymentDataRequest
      */
     'amount'?: number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PaymentDataRequest
-     */
     'currency'?: Currency;
     /**
      * Merchant-assigned order reference number to associate with the payment.
-     * @type {string}
-     * @memberof PaymentDataRequest
      */
     'external_order_num'?: string;
     /**
      * Customer\'s full name.
-     * @type {string}
-     * @memberof PaymentDataRequest
      */
     'name'?: string;
     /**
      * Customer\'s full name in katakana.
-     * @type {string}
-     * @memberof PaymentDataRequest
      */
     'name_kana'?: string;
     /**
      * Merchant Category Code to use for this payment.
-     * @type {string}
-     * @memberof PaymentDataRequest
      */
     'mcc'?: string;
-    /**
-     * 
-     * @type {Intent}
-     * @memberof PaymentDataRequest
-     */
     'intent'?: Intent;
-    /**
-     * 
-     * @type {StatementDescriptor}
-     * @memberof PaymentDataRequest
-     */
     'statement_descriptor'?: StatementDescriptor;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof PaymentDataRequest
-     */
     'platform_details'?: PlatformDetails;
-    /**
-     * 
-     * @type {Address}
-     * @memberof PaymentDataRequest
-     */
     'billing_address'?: Address;
-    /**
-     * 
-     * @type {Address}
-     * @memberof PaymentDataRequest
-     */
     'shipping_address'?: Address;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDataRequestCaptureEnum {
     Auto = 'auto',
     Manual = 'manual'

@@ -14,11 +14,6 @@
 
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export enum LiveApplicationStatus {
     NotApplied = 'not_applied',

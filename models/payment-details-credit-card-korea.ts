@@ -19,148 +19,95 @@ import type { PaymentDetailsCreditCardKoreaSocialId } from './payment-details-cr
 
 /**
  * 
- * @export
- * @interface PaymentDetailsCreditCardKorea
  */
 export interface PaymentDetailsCreditCardKorea {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'type': PaymentDetailsCreditCardKoreaTypeEnum;
     /**
      * Credit card number.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'number': string;
     /**
      * Credit card expiration month.
-     * @type {number}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'month': number;
     /**
      * Credit card expiration year.  If this value is less than 100, it will be treated as two digits year in the current century. E.g. If current year is `2024`, `99` means `2099`.
-     * @type {number}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'year': number;
     /**
      * Credit card verification value (Also known as CVV2 or CVC2).
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'verification_value'?: string;
     /**
      * Specify whether this payment card is a corporate card.
-     * @type {boolean}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'corporate_card'?: boolean;
-    /**
-     * 
-     * @type {PaymentDetailsCreditCardKoreaSocialId}
-     * @memberof PaymentDetailsCreditCardKorea
-     */
     'social_id'?: PaymentDetailsCreditCardKoreaSocialId;
     /**
      * Specify the first four digit of credit card\'s PIN number.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'first_two_digits_of_pin': string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof PaymentDetailsCreditCardKorea
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDetailsCreditCardKoreaTypeEnum {
     CreditCardKorea = 'credit_card_korea'
 }

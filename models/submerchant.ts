@@ -14,28 +14,17 @@
 
 
 
-/**
- * 
- * @export
- * @interface Submerchant
- */
 export interface Submerchant {
     /**
      * A unique 25-character alphanumeric merchant identifier.
-     * @type {string}
-     * @memberof Submerchant
      */
     'submerchant_id': string;
     /**
      * The amount with tax included, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Submerchant
      */
     'amount': number;
     /**
      * The platform fee amount, tax included, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Submerchant
      */
     'platform_fee': number;
 }

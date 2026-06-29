@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -60,6 +60,10 @@ import type { MerchantRole } from '../models';
 // @ts-ignore
 import type { MerchantSubmissionStatus } from '../models';
 // @ts-ignore
+import type { PaymentMethodApplication } from '../models';
+// @ts-ignore
+import type { PaymentMethodApplicationWithSubmittedFields } from '../models';
+// @ts-ignore
 import type { PaymentMethodStatus } from '../models';
 // @ts-ignore
 import type { PaymentMethodsList } from '../models';
@@ -87,7 +91,6 @@ import type { UpdateMerchantRequest } from '../models';
 import type { UpdatePaymentMethodRequest } from '../models';
 /**
  * PlatformModelApi - axios parameter creator
- * @export
  */
 export const PlatformModelApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -105,7 +108,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'balanceTransferRequest' is not null or undefined
             assertParamExists('balanceTransfer', 'balanceTransferRequest', balanceTransferRequest)
             const localVarPath = `/balances/{currency}/transfer`
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -121,9 +124,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -149,7 +151,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'createFileRequest' is not null or undefined
             assertParamExists('createFile', 'createFileRequest', createFileRequest)
             const localVarPath = `/merchants/{merchant_id}/files`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -165,9 +167,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -205,9 +206,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -236,8 +236,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'createMerchantBalanceTransferRequest' is not null or undefined
             assertParamExists('createMerchantBalanceTransfer', 'createMerchantBalanceTransferRequest', createMerchantBalanceTransferRequest)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}/transfer`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -253,9 +253,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -284,8 +283,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'editMerchantBalanceSettingsRequest' is not null or undefined
             assertParamExists('editMerchantBalanceSettings', 'editMerchantBalanceSettingsRequest', editMerchantBalanceSettingsRequest)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}/settings`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -293,7 +292,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -301,9 +300,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -327,7 +325,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'merchantId' is not null or undefined
             assertParamExists('listLiveApplicationPaymentMethods', 'merchantId', merchantId)
             const localVarPath = `/live_application/{merchant_id}/payment_methods`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -347,8 +345,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['locale'] = locale;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -430,8 +428,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['payouts_enabled'] = payoutsEnabled;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -459,7 +457,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'merchantId' is not null or undefined
             assertParamExists('listSubmerchantPayments', 'merchantId', merchantId)
             const localVarPath = `/merchants/{merchant_id}/payments`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -507,8 +505,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['status'] = status;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -529,7 +527,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'merchantId' is not null or undefined
             assertParamExists('listSubmerchantSettlements', 'merchantId', merchantId)
             const localVarPath = `/merchants/{merchant_id}/settlements`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -545,8 +543,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -575,8 +573,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'currency' is not null or undefined
             assertParamExists('merchantBalanceTransactions', 'currency', currency)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}/transactions`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -616,8 +614,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['type'] = type;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -641,8 +639,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showFile', 'id', id)
             const localVarPath = `/merchants/{merchant_id}/files/{id}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -658,8 +656,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -681,7 +679,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'merchantId' is not null or undefined
             assertParamExists('showLiveApplication', 'merchantId', merchantId)
             const localVarPath = `/live_application/{merchant_id}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -701,8 +699,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['locale'] = locale;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -727,8 +725,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'paymentMethod' is not null or undefined
             assertParamExists('showLiveApplicationPaymentMethod', 'paymentMethod', paymentMethod)
             const localVarPath = `/live_application/{merchant_id}/payment_methods/{payment_method}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"payment_method"}}`, encodeURIComponent(String(paymentMethod)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{payment_method}', encodeURIComponent(String(paymentMethod)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -748,8 +746,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['locale'] = locale;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -770,7 +768,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showMerchant', 'id', id)
             const localVarPath = `/merchants/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -786,8 +784,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -811,8 +809,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'currency' is not null or undefined
             assertParamExists('showMerchantBalance', 'currency', currency)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -828,8 +826,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -853,8 +851,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'currency' is not null or undefined
             assertParamExists('showMerchantBalanceSettings', 'currency', currency)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}/settings`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -870,8 +868,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -898,9 +896,9 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'transactionUuid' is not null or undefined
             assertParamExists('showMerchantBalanceTransaction', 'transactionUuid', transactionUuid)
             const localVarPath = `/merchants/{merchant_id}/balances/{currency}/transactions/{transaction_uuid}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)))
-                .replace(`{${"transaction_uuid"}}`, encodeURIComponent(String(transactionUuid)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{currency}', encodeURIComponent(String(currency)))
+                .replace('{transaction_uuid}', encodeURIComponent(String(transactionUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -916,8 +914,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -941,8 +939,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSubmerchantSettlement', 'id', id)
             const localVarPath = `/merchants/{merchant_id}/settlements/{id}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -958,8 +956,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -986,8 +984,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'simulateLiveApplicationPaymentMethodStatusRequest' is not null or undefined
             assertParamExists('simulateLiveApplicationPaymentMethodStatus', 'simulateLiveApplicationPaymentMethodStatusRequest', simulateLiveApplicationPaymentMethodStatusRequest)
             const localVarPath = `/live_application/{merchant_id}/payment_methods/{payment_method}/simulate_status`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"payment_method"}}`, encodeURIComponent(String(paymentMethod)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{payment_method}', encodeURIComponent(String(paymentMethod)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1003,9 +1001,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1031,7 +1028,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'simulateLiveApplicationPaymentMethodStatusRequest' is not null or undefined
             assertParamExists('simulateLiveApplicationStatus', 'simulateLiveApplicationPaymentMethodStatusRequest', simulateLiveApplicationPaymentMethodStatusRequest)
             const localVarPath = `/live_application/{merchant_id}/simulate_status`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1047,9 +1044,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1075,8 +1071,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('submerchantSettlementCSV', 'id', id)
             const localVarPath = `/merchants/{merchant_id}/settlements/{id}/csv`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1093,7 +1089,6 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1117,8 +1112,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('submerchantSettlementPDF', 'id', id)
             const localVarPath = `/merchants/{merchant_id}/settlements/{id}/pdf`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1135,7 +1130,6 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1159,8 +1153,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('submerchantSettlementXLS', 'id', id)
             const localVarPath = `/merchants/{merchant_id}/settlements/{id}/xls`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1177,7 +1171,6 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -1201,7 +1194,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'liveApplicationRequest' is not null or undefined
             assertParamExists('updateLiveApplication', 'liveApplicationRequest', liveApplicationRequest)
             const localVarPath = `/live_application/{merchant_id}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1217,9 +1210,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1248,8 +1240,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'updatePaymentMethodRequest' is not null or undefined
             assertParamExists('updateLiveApplicationPaymentMethod', 'updatePaymentMethodRequest', updatePaymentMethodRequest)
             const localVarPath = `/live_application/{merchant_id}/payment_methods/{payment_method}`
-                .replace(`{${"merchant_id"}}`, encodeURIComponent(String(merchantId)))
-                .replace(`{${"payment_method"}}`, encodeURIComponent(String(paymentMethod)));
+                .replace('{merchant_id}', encodeURIComponent(String(merchantId)))
+                .replace('{payment_method}', encodeURIComponent(String(paymentMethod)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1265,9 +1257,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1293,7 +1284,7 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'updateMerchantRequest' is not null or undefined
             assertParamExists('updateMerchant', 'updateMerchantRequest', updateMerchantRequest)
             const localVarPath = `/merchants/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1309,9 +1300,8 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1328,7 +1318,6 @@ export const PlatformModelApiAxiosParamCreator = function (configuration?: Confi
 
 /**
  * PlatformModelApi - functional programming interface
- * @export
  */
 export const PlatformModelApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PlatformModelApiAxiosParamCreator(configuration)
@@ -1528,7 +1517,7 @@ export const PlatformModelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async showLiveApplicationPaymentMethod(merchantId: string, paymentMethod: string, locale?: Locale, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveApplicationWithSubmittedFields>> {
+        async showLiveApplicationPaymentMethod(merchantId: string, paymentMethod: string, locale?: Locale, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentMethodApplicationWithSubmittedFields>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.showLiveApplicationPaymentMethod(merchantId, paymentMethod, locale, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlatformModelApi.showLiveApplicationPaymentMethod']?.[localVarOperationServerIndex]?.url;
@@ -1698,7 +1687,7 @@ export const PlatformModelApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateLiveApplicationPaymentMethod(merchantId: string, paymentMethod: string, updatePaymentMethodRequest: UpdatePaymentMethodRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveApplication>> {
+        async updateLiveApplicationPaymentMethod(merchantId: string, paymentMethod: string, updatePaymentMethodRequest: UpdatePaymentMethodRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentMethodApplication>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateLiveApplicationPaymentMethod(merchantId, paymentMethod, updatePaymentMethodRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlatformModelApi.updateLiveApplicationPaymentMethod']?.[localVarOperationServerIndex]?.url;
@@ -1723,7 +1712,6 @@ export const PlatformModelApiFp = function(configuration?: Configuration) {
 
 /**
  * PlatformModelApi - factory interface
- * @export
  */
 export const PlatformModelApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = PlatformModelApiFp(configuration)
@@ -1855,7 +1843,7 @@ export const PlatformModelApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        showLiveApplicationPaymentMethod(requestParameters: PlatformModelApiShowLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig): AxiosPromise<LiveApplicationWithSubmittedFields> {
+        showLiveApplicationPaymentMethod(requestParameters: PlatformModelApiShowLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaymentMethodApplicationWithSubmittedFields> {
             return localVarFp.showLiveApplicationPaymentMethod(requestParameters.merchantId, requestParameters.paymentMethod, requestParameters.locale, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1975,7 +1963,7 @@ export const PlatformModelApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateLiveApplicationPaymentMethod(requestParameters: PlatformModelApiUpdateLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig): AxiosPromise<LiveApplication> {
+        updateLiveApplicationPaymentMethod(requestParameters: PlatformModelApiUpdateLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig): AxiosPromise<PaymentMethodApplication> {
             return localVarFp.updateLiveApplicationPaymentMethod(requestParameters.merchantId, requestParameters.paymentMethod, requestParameters.updatePaymentMethodRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1993,702 +1981,318 @@ export const PlatformModelApiFactory = function (configuration?: Configuration, 
 
 /**
  * Request parameters for balanceTransfer operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiBalanceTransferRequest
  */
 export interface PlatformModelApiBalanceTransferRequest {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiBalanceTransfer
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {BalanceTransferRequest}
-     * @memberof PlatformModelApiBalanceTransfer
-     */
     readonly balanceTransferRequest: BalanceTransferRequest
 }
 
 /**
  * Request parameters for createFile operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiCreateFileRequest
  */
 export interface PlatformModelApiCreateFileRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiCreateFile
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {CreateFileRequest}
-     * @memberof PlatformModelApiCreateFile
-     */
     readonly createFileRequest: CreateFileRequest
 }
 
 /**
  * Request parameters for createMerchant operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiCreateMerchantRequest
  */
 export interface PlatformModelApiCreateMerchantRequest {
-    /**
-     * 
-     * @type {CreateMerchantRequest}
-     * @memberof PlatformModelApiCreateMerchant
-     */
     readonly createMerchantRequest: CreateMerchantRequest
 }
 
 /**
  * Request parameters for createMerchantBalanceTransfer operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiCreateMerchantBalanceTransferRequest
  */
 export interface PlatformModelApiCreateMerchantBalanceTransferRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiCreateMerchantBalanceTransfer
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiCreateMerchantBalanceTransfer
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {CreateMerchantBalanceTransferRequest}
-     * @memberof PlatformModelApiCreateMerchantBalanceTransfer
-     */
     readonly createMerchantBalanceTransferRequest: CreateMerchantBalanceTransferRequest
 }
 
 /**
  * Request parameters for editMerchantBalanceSettings operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiEditMerchantBalanceSettingsRequest
  */
 export interface PlatformModelApiEditMerchantBalanceSettingsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiEditMerchantBalanceSettings
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiEditMerchantBalanceSettings
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {EditMerchantBalanceSettingsRequest}
-     * @memberof PlatformModelApiEditMerchantBalanceSettings
-     */
     readonly editMerchantBalanceSettingsRequest: EditMerchantBalanceSettingsRequest
 }
 
 /**
  * Request parameters for listLiveApplicationPaymentMethods operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiListLiveApplicationPaymentMethodsRequest
  */
 export interface PlatformModelApiListLiveApplicationPaymentMethodsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiListLiveApplicationPaymentMethods
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Locale}
-     * @memberof PlatformModelApiListLiveApplicationPaymentMethods
-     */
     readonly locale?: Locale
 }
 
 /**
  * Request parameters for listMerchants operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiListMerchantsRequest
  */
 export interface PlatformModelApiListMerchantsRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof PlatformModelApiListMerchants
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof PlatformModelApiListMerchants
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof PlatformModelApiListMerchants
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof PlatformModelApiListMerchants
      */
     readonly page?: number
 
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PlatformModelApiListMerchants
-     */
     readonly live?: boolean
 
-    /**
-     * 
-     * @type {MerchantRole}
-     * @memberof PlatformModelApiListMerchants
-     */
     readonly platformRole?: MerchantRole
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiListMerchants
-     */
     readonly status?: string
 
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PlatformModelApiListMerchants
-     */
     readonly paymentsEnabled?: boolean
 
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PlatformModelApiListMerchants
-     */
     readonly payoutsEnabled?: boolean
 }
 
 /**
  * Request parameters for listSubmerchantPayments operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiListSubmerchantPaymentsRequest
  */
 export interface PlatformModelApiListSubmerchantPaymentsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiListSubmerchantPayments
-     */
     readonly merchantId: string
 
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof PlatformModelApiListSubmerchantPayments
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof PlatformModelApiListSubmerchantPayments
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof PlatformModelApiListSubmerchantPayments
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof PlatformModelApiListSubmerchantPayments
      */
     readonly page?: number
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiListSubmerchantPayments
-     */
     readonly currency?: Currency
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiListSubmerchantPayments
-     */
     readonly externalOrderNum?: string
 
-    /**
-     * 
-     * @type {PaymentStatus}
-     * @memberof PlatformModelApiListSubmerchantPayments
-     */
     readonly status?: PaymentStatus
 }
 
 /**
  * Request parameters for listSubmerchantSettlements operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiListSubmerchantSettlementsRequest
  */
 export interface PlatformModelApiListSubmerchantSettlementsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiListSubmerchantSettlements
-     */
     readonly merchantId: string
 }
 
 /**
  * Request parameters for merchantBalanceTransactions operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiMerchantBalanceTransactionsRequest
  */
 export interface PlatformModelApiMerchantBalanceTransactionsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
-     */
     readonly currency: Currency
 
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
      */
     readonly page?: number
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiMerchantBalanceTransactions
-     */
     readonly type?: string
 }
 
 /**
  * Request parameters for showFile operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowFileRequest
  */
 export interface PlatformModelApiShowFileRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowFile
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowFile
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showLiveApplication operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowLiveApplicationRequest
  */
 export interface PlatformModelApiShowLiveApplicationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowLiveApplication
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Locale}
-     * @memberof PlatformModelApiShowLiveApplication
-     */
     readonly locale?: Locale
 }
 
 /**
  * Request parameters for showLiveApplicationPaymentMethod operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowLiveApplicationPaymentMethodRequest
  */
 export interface PlatformModelApiShowLiveApplicationPaymentMethodRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowLiveApplicationPaymentMethod
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowLiveApplicationPaymentMethod
-     */
     readonly paymentMethod: string
 
-    /**
-     * 
-     * @type {Locale}
-     * @memberof PlatformModelApiShowLiveApplicationPaymentMethod
-     */
     readonly locale?: Locale
 }
 
 /**
  * Request parameters for showMerchant operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowMerchantRequest
  */
 export interface PlatformModelApiShowMerchantRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowMerchant
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showMerchantBalance operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowMerchantBalanceRequest
  */
 export interface PlatformModelApiShowMerchantBalanceRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowMerchantBalance
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiShowMerchantBalance
-     */
     readonly currency: Currency
 }
 
 /**
  * Request parameters for showMerchantBalanceSettings operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowMerchantBalanceSettingsRequest
  */
 export interface PlatformModelApiShowMerchantBalanceSettingsRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowMerchantBalanceSettings
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiShowMerchantBalanceSettings
-     */
     readonly currency: Currency
 }
 
 /**
  * Request parameters for showMerchantBalanceTransaction operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowMerchantBalanceTransactionRequest
  */
 export interface PlatformModelApiShowMerchantBalanceTransactionRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowMerchantBalanceTransaction
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PlatformModelApiShowMerchantBalanceTransaction
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowMerchantBalanceTransaction
-     */
     readonly transactionUuid: string
 }
 
 /**
  * Request parameters for showSubmerchantSettlement operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiShowSubmerchantSettlementRequest
  */
 export interface PlatformModelApiShowSubmerchantSettlementRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowSubmerchantSettlement
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiShowSubmerchantSettlement
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for simulateLiveApplicationPaymentMethodStatus operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiSimulateLiveApplicationPaymentMethodStatusRequest
  */
 export interface PlatformModelApiSimulateLiveApplicationPaymentMethodStatusRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSimulateLiveApplicationPaymentMethodStatus
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSimulateLiveApplicationPaymentMethodStatus
-     */
     readonly paymentMethod: string
 
-    /**
-     * 
-     * @type {SimulateLiveApplicationPaymentMethodStatusRequest}
-     * @memberof PlatformModelApiSimulateLiveApplicationPaymentMethodStatus
-     */
     readonly simulateLiveApplicationPaymentMethodStatusRequest: SimulateLiveApplicationPaymentMethodStatusRequest
 }
 
 /**
  * Request parameters for simulateLiveApplicationStatus operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiSimulateLiveApplicationStatusRequest
  */
 export interface PlatformModelApiSimulateLiveApplicationStatusRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSimulateLiveApplicationStatus
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {SimulateLiveApplicationPaymentMethodStatusRequest}
-     * @memberof PlatformModelApiSimulateLiveApplicationStatus
-     */
     readonly simulateLiveApplicationPaymentMethodStatusRequest: SimulateLiveApplicationPaymentMethodStatusRequest
 }
 
 /**
  * Request parameters for submerchantSettlementCSV operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiSubmerchantSettlementCSVRequest
  */
 export interface PlatformModelApiSubmerchantSettlementCSVRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementCSV
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementCSV
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for submerchantSettlementPDF operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiSubmerchantSettlementPDFRequest
  */
 export interface PlatformModelApiSubmerchantSettlementPDFRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementPDF
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementPDF
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for submerchantSettlementXLS operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiSubmerchantSettlementXLSRequest
  */
 export interface PlatformModelApiSubmerchantSettlementXLSRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementXLS
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiSubmerchantSettlementXLS
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for updateLiveApplication operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiUpdateLiveApplicationRequest
  */
 export interface PlatformModelApiUpdateLiveApplicationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiUpdateLiveApplication
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {LiveApplicationRequest}
-     * @memberof PlatformModelApiUpdateLiveApplication
-     */
     readonly liveApplicationRequest: LiveApplicationRequest
 }
 
 /**
  * Request parameters for updateLiveApplicationPaymentMethod operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiUpdateLiveApplicationPaymentMethodRequest
  */
 export interface PlatformModelApiUpdateLiveApplicationPaymentMethodRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiUpdateLiveApplicationPaymentMethod
-     */
     readonly merchantId: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiUpdateLiveApplicationPaymentMethod
-     */
     readonly paymentMethod: string
 
-    /**
-     * 
-     * @type {UpdatePaymentMethodRequest}
-     * @memberof PlatformModelApiUpdateLiveApplicationPaymentMethod
-     */
     readonly updatePaymentMethodRequest: UpdatePaymentMethodRequest
 }
 
 /**
  * Request parameters for updateMerchant operation in PlatformModelApi.
- * @export
- * @interface PlatformModelApiUpdateMerchantRequest
  */
 export interface PlatformModelApiUpdateMerchantRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PlatformModelApiUpdateMerchant
-     */
     readonly id: string
 
-    /**
-     * 
-     * @type {UpdateMerchantRequest}
-     * @memberof PlatformModelApiUpdateMerchant
-     */
     readonly updateMerchantRequest: UpdateMerchantRequest
 }
 
 /**
  * PlatformModelApi - object-oriented interface
- * @export
- * @class PlatformModelApi
- * @extends {BaseAPI}
  */
 export class PlatformModelApi extends BaseAPI {
     /**
@@ -2697,7 +2301,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiBalanceTransferRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public balanceTransfer(requestParameters: PlatformModelApiBalanceTransferRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).balanceTransfer(requestParameters.currency, requestParameters.balanceTransferRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2709,7 +2312,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiCreateFileRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public createFile(requestParameters: PlatformModelApiCreateFileRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).createFile(requestParameters.merchantId, requestParameters.createFileRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2721,7 +2323,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiCreateMerchantRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public createMerchant(requestParameters: PlatformModelApiCreateMerchantRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).createMerchant(requestParameters.createMerchantRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2733,7 +2334,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiCreateMerchantBalanceTransferRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public createMerchantBalanceTransfer(requestParameters: PlatformModelApiCreateMerchantBalanceTransferRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).createMerchantBalanceTransfer(requestParameters.merchantId, requestParameters.currency, requestParameters.createMerchantBalanceTransferRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2745,7 +2345,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiEditMerchantBalanceSettingsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public editMerchantBalanceSettings(requestParameters: PlatformModelApiEditMerchantBalanceSettingsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).editMerchantBalanceSettings(requestParameters.merchantId, requestParameters.currency, requestParameters.editMerchantBalanceSettingsRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2757,7 +2356,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiListLiveApplicationPaymentMethodsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public listLiveApplicationPaymentMethods(requestParameters: PlatformModelApiListLiveApplicationPaymentMethodsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).listLiveApplicationPaymentMethods(requestParameters.merchantId, requestParameters.locale, options).then((request) => request(this.axios, this.basePath));
@@ -2769,7 +2367,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiListMerchantsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public listMerchants(requestParameters: PlatformModelApiListMerchantsRequest = {}, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).listMerchants(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.live, requestParameters.platformRole, requestParameters.status, requestParameters.paymentsEnabled, requestParameters.payoutsEnabled, options).then((request) => request(this.axios, this.basePath));
@@ -2781,7 +2378,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiListSubmerchantPaymentsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public listSubmerchantPayments(requestParameters: PlatformModelApiListSubmerchantPaymentsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).listSubmerchantPayments(requestParameters.merchantId, requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.currency, requestParameters.externalOrderNum, requestParameters.status, options).then((request) => request(this.axios, this.basePath));
@@ -2793,7 +2389,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiListSubmerchantSettlementsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public listSubmerchantSettlements(requestParameters: PlatformModelApiListSubmerchantSettlementsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).listSubmerchantSettlements(requestParameters.merchantId, options).then((request) => request(this.axios, this.basePath));
@@ -2805,7 +2400,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiMerchantBalanceTransactionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public merchantBalanceTransactions(requestParameters: PlatformModelApiMerchantBalanceTransactionsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).merchantBalanceTransactions(requestParameters.merchantId, requestParameters.currency, requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
@@ -2817,7 +2411,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowFileRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showFile(requestParameters: PlatformModelApiShowFileRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showFile(requestParameters.merchantId, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2829,7 +2422,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowLiveApplicationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showLiveApplication(requestParameters: PlatformModelApiShowLiveApplicationRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showLiveApplication(requestParameters.merchantId, requestParameters.locale, options).then((request) => request(this.axios, this.basePath));
@@ -2841,7 +2433,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowLiveApplicationPaymentMethodRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showLiveApplicationPaymentMethod(requestParameters: PlatformModelApiShowLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showLiveApplicationPaymentMethod(requestParameters.merchantId, requestParameters.paymentMethod, requestParameters.locale, options).then((request) => request(this.axios, this.basePath));
@@ -2853,7 +2444,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowMerchantRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showMerchant(requestParameters: PlatformModelApiShowMerchantRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showMerchant(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2865,7 +2455,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowMerchantBalanceRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showMerchantBalance(requestParameters: PlatformModelApiShowMerchantBalanceRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showMerchantBalance(requestParameters.merchantId, requestParameters.currency, options).then((request) => request(this.axios, this.basePath));
@@ -2877,7 +2466,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowMerchantBalanceSettingsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showMerchantBalanceSettings(requestParameters: PlatformModelApiShowMerchantBalanceSettingsRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showMerchantBalanceSettings(requestParameters.merchantId, requestParameters.currency, options).then((request) => request(this.axios, this.basePath));
@@ -2889,7 +2477,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowMerchantBalanceTransactionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showMerchantBalanceTransaction(requestParameters: PlatformModelApiShowMerchantBalanceTransactionRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showMerchantBalanceTransaction(requestParameters.merchantId, requestParameters.currency, requestParameters.transactionUuid, options).then((request) => request(this.axios, this.basePath));
@@ -2901,7 +2488,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiShowSubmerchantSettlementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public showSubmerchantSettlement(requestParameters: PlatformModelApiShowSubmerchantSettlementRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).showSubmerchantSettlement(requestParameters.merchantId, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2913,7 +2499,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiSimulateLiveApplicationPaymentMethodStatusRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public simulateLiveApplicationPaymentMethodStatus(requestParameters: PlatformModelApiSimulateLiveApplicationPaymentMethodStatusRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).simulateLiveApplicationPaymentMethodStatus(requestParameters.merchantId, requestParameters.paymentMethod, requestParameters.simulateLiveApplicationPaymentMethodStatusRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2925,7 +2510,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiSimulateLiveApplicationStatusRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public simulateLiveApplicationStatus(requestParameters: PlatformModelApiSimulateLiveApplicationStatusRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).simulateLiveApplicationStatus(requestParameters.merchantId, requestParameters.simulateLiveApplicationPaymentMethodStatusRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2937,7 +2521,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiSubmerchantSettlementCSVRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public submerchantSettlementCSV(requestParameters: PlatformModelApiSubmerchantSettlementCSVRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).submerchantSettlementCSV(requestParameters.merchantId, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2949,7 +2532,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiSubmerchantSettlementPDFRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public submerchantSettlementPDF(requestParameters: PlatformModelApiSubmerchantSettlementPDFRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).submerchantSettlementPDF(requestParameters.merchantId, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2961,7 +2543,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiSubmerchantSettlementXLSRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public submerchantSettlementXLS(requestParameters: PlatformModelApiSubmerchantSettlementXLSRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).submerchantSettlementXLS(requestParameters.merchantId, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -2973,7 +2554,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiUpdateLiveApplicationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public updateLiveApplication(requestParameters: PlatformModelApiUpdateLiveApplicationRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).updateLiveApplication(requestParameters.merchantId, requestParameters.liveApplicationRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2985,7 +2565,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiUpdateLiveApplicationPaymentMethodRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public updateLiveApplicationPaymentMethod(requestParameters: PlatformModelApiUpdateLiveApplicationPaymentMethodRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).updateLiveApplicationPaymentMethod(requestParameters.merchantId, requestParameters.paymentMethod, requestParameters.updatePaymentMethodRequest, options).then((request) => request(this.axios, this.basePath));
@@ -2997,7 +2576,6 @@ export class PlatformModelApi extends BaseAPI {
      * @param {PlatformModelApiUpdateMerchantRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PlatformModelApi
      */
     public updateMerchant(requestParameters: PlatformModelApiUpdateMerchantRequest, options?: RawAxiosRequestConfig) {
         return PlatformModelApiFp(this.configuration).updateMerchant(requestParameters.id, requestParameters.updateMerchantRequest, options).then((request) => request(this.axios, this.basePath));

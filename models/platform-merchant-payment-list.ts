@@ -17,46 +17,29 @@
 // @ts-ignore
 import type { PlatformPayment } from './platform-payment';
 
-/**
- * 
- * @export
- * @interface PlatformMerchantPaymentList
- */
 export interface PlatformMerchantPaymentList {
     /**
      * Resource type name for this list.
-     * @type {string}
-     * @memberof PlatformMerchantPaymentList
      */
     'resource': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof PlatformMerchantPaymentList
      */
     'total': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof PlatformMerchantPaymentList
      */
     'page': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof PlatformMerchantPaymentList
      */
     'per_page': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof PlatformMerchantPaymentList
      */
     'last_page': number;
     /**
      * Array of payment objects for this page.
-     * @type {Array<PlatformPayment>}
-     * @memberof PlatformMerchantPaymentList
      */
     'data': Array<PlatformPayment>;
 }

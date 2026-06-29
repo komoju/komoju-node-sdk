@@ -14,34 +14,21 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsRefunds
- */
 export interface SharedDetailsRefunds {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsRefunds
      */
     'refunded_amount_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsRefunds
      */
     'refund_processing_fees_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsRefunds
      */
     'refunded_customer_fees_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsRefunds
      */
     'total_cents': number;
 }

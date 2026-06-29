@@ -16,118 +16,78 @@
 
 /**
  * 
- * @export
- * @interface PaymentDetailsBitCash
  */
 export interface PaymentDetailsBitCash {
     /**
      * Payment method type.  **Note:** Unlike other prepaid payment methods, this payment method does **NOT** support updating the payment with additional prepaid cards.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'type': PaymentDetailsBitCashTypeEnum;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'email'?: string;
     /**
      * Prepaid card number.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'prepaid_number': string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof PaymentDetailsBitCash
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDetailsBitCashTypeEnum {
     BitCash = 'bit_cash'
 }

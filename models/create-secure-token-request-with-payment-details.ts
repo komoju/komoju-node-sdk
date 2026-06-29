@@ -25,39 +25,15 @@ import type { ProcessingMerchant } from './processing-merchant';
 
 /**
  * 
- * @export
- * @interface CreateSecureTokenRequestWithPaymentDetails
  */
 export interface CreateSecureTokenRequestWithPaymentDetails {
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateSecureTokenRequestWithPaymentDetails
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateSecureTokenRequestWithPaymentDetails
-     */
     'currency': Currency;
-    /**
-     * 
-     * @type {PaymentDetailsOnlyCreditCards}
-     * @memberof CreateSecureTokenRequestWithPaymentDetails
-     */
     'payment_details': PaymentDetailsOnlyCreditCards;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSecureTokenRequestWithPaymentDetails
-     */
     'return_url': string;
-    /**
-     * 
-     * @type {ProcessingMerchant}
-     * @memberof CreateSecureTokenRequestWithPaymentDetails
-     */
     'platform_details'?: ProcessingMerchant;
 }
 

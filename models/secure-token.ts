@@ -15,43 +15,39 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
+import type { SecureTokenThreeDSecureAccount } from './secure-token-three-dsecure-account';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { ThreeDsAuthResult } from './three-ds-auth-result';
 
-/**
- * 
- * @export
- * @interface SecureToken
- */
 export interface SecureToken {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof SecureToken
      */
     'id': string;
     /**
      * Timestamp when the SecureToken was created.
-     * @type {string}
-     * @memberof SecureToken
      */
     'created_at': string;
     /**
      * Current 3DS verification status of this SecureToken.
-     * @type {string}
-     * @memberof SecureToken
      */
-    'verification_status': string;
+    'verification_status': SecureTokenVerificationStatusEnum;
     /**
-     * URL to redirect the customer to for 3DS authentication.
-     * @type {string}
-     * @memberof SecureToken
+     * URL to redirect the customer to for 3DS authentication. Only present when verification_status is \"NEEDS_VERIFY\".
      */
-    'authentication_url': string;
-    /**
-     * 
-     * @type {ThreeDsAuthResult}
-     * @memberof SecureToken
-     */
+    'authentication_url'?: string;
+    'three_d_secure_account'?: SecureTokenThreeDSecureAccount;
     'three_ds_auth_result'?: ThreeDsAuthResult;
 }
+
+export enum SecureTokenVerificationStatusEnum {
+    Ok = 'OK',
+    NeedsVerify = 'NEEDS_VERIFY',
+    Errored = 'ERRORED',
+    Skipped = 'SKIPPED',
+    Created = 'CREATED',
+    Expired = 'EXPIRED'
+}
+
 

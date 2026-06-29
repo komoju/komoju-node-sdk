@@ -14,11 +14,6 @@
 
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export enum IndustryType {
     ClothingAndAccessories = 'clothing_and_accessories',

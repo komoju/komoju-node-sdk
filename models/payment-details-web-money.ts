@@ -16,118 +16,78 @@
 
 /**
  * 
- * @export
- * @interface PaymentDetailsWebMoney
  */
 export interface PaymentDetailsWebMoney {
     /**
      * Payment method type.  **Note:** This payment method support updating the payment with additional prepaid cards to cover the total balance. In case of insufficient funds, the payment status will be `pending`.  The `payment_details` in the response will also include these two attributes:  - `short_amount`: The amount that the payment is short by. - `prepaid_cards`: A list of prepaid cards used in the transaction.  Please see the integration document for more details.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'type': PaymentDetailsWebMoneyTypeEnum;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'email'?: string;
     /**
      * Prepaid card number.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'prepaid_number': string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof PaymentDetailsWebMoney
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDetailsWebMoneyTypeEnum {
     WebMoney = 'web_money'
 }

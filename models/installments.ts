@@ -16,8 +16,6 @@
 
 /**
  * Specify the number of installment months or \"revolving\" payment.  This feature only works for some acquirers, and only for `JPY` transactions.
- * @export
- * @enum {string}
  */
 
 export enum Installments {

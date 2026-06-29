@@ -17,29 +17,9 @@
 // @ts-ignore
 import type { PaymentDetailsAll } from './payment-details-all';
 
-/**
- * 
- * @export
- * @interface UpdatePaymentRequest
- */
 export interface UpdatePaymentRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdatePaymentRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof UpdatePaymentRequest
-     */
     'metadata'?: object;
-    /**
-     * 
-     * @type {PaymentDetailsAll}
-     * @memberof UpdatePaymentRequest
-     */
     'payment_details'?: PaymentDetailsAll;
 }
 

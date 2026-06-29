@@ -16,8 +16,6 @@
 
 /**
  * Status of the refund request.
- * @export
- * @enum {string}
  */
 
 export enum RefundRequestStatus {

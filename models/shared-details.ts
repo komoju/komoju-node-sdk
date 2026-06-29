@@ -32,53 +32,13 @@ import type { SharedDetailsPlatformModel } from './shared-details-platform-model
 // @ts-ignore
 import type { SharedDetailsRefunds } from './shared-details-refunds';
 
-/**
- * 
- * @export
- * @interface SharedDetails
- */
 export interface SharedDetails {
-    /**
-     * 
-     * @type {SharedDetailsPayments}
-     * @memberof SharedDetails
-     */
     'payments': SharedDetailsPayments;
-    /**
-     * 
-     * @type {SharedDetailsRefunds}
-     * @memberof SharedDetails
-     */
     'refunds': SharedDetailsRefunds;
-    /**
-     * 
-     * @type {SharedDetailsPlatformModel}
-     * @memberof SharedDetails
-     */
     'platform_model'?: SharedDetailsPlatformModel;
-    /**
-     * 
-     * @type {SharedDetailsCorrections}
-     * @memberof SharedDetails
-     */
     'corrections': SharedDetailsCorrections;
-    /**
-     * 
-     * @type {SharedDetailsCorrections}
-     * @memberof SharedDetails
-     */
     'komoju_card_charges': SharedDetailsCorrections;
-    /**
-     * 
-     * @type {SharedDetailsDisbursements}
-     * @memberof SharedDetails
-     */
     'disbursements': SharedDetailsDisbursements;
-    /**
-     * 
-     * @type {SharedDetailsMisc}
-     * @memberof SharedDetails
-     */
     'misc': SharedDetailsMisc;
 }
 

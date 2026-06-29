@@ -4,7 +4,9 @@ All URIs are relative to *https://komoju.com/api/v1*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**balanceTransactions**](SettlementsApi.md#balanceTransactions) | **GET** /balances/{currency}/transactions | Balance: Transactions |
 | [**listSettlements**](SettlementsApi.md#listSettlements) | **GET** /settlements | Settlement: Index |
+| [**showBalance**](SettlementsApi.md#showBalance) | **GET** /balances/{currency} | Balance: Show |
 | [**showSettlement**](SettlementsApi.md#showSettlement) | **GET** /settlements/{id} | Settlement: Show |
 | [**showSettlementCSV**](SettlementsApi.md#showSettlementCSV) | **GET** /settlements/{id}/csv | Settlement: CSV |
 | [**showSettlementPDF**](SettlementsApi.md#showSettlementPDF) | **GET** /settlements/{id}/pdf | Settlement: PDF |
@@ -22,6 +24,48 @@ config.setApiKey('YOUR_SECRET_KEY');
 
 const api = new SettlementsApi(config);
 ```
+
+## balanceTransactions
+
+> BalanceTransactionList balanceTransactions(currency, startTime, endTime, perPage, page, type)
+
+Balance: Transactions
+
+Given a currency, view the ledger transactions of the currently authenticated merchant. Will split ledger transactions into line items when appropriate.
+
+### Example
+
+```typescript
+const result = await api.balanceTransactions({
+  currency: 'YOUR_ID',
+  // startTime: ...,  // optional
+  // endTime: ...,  // optional
+  // perPage: ...,  // optional
+  // page: ...,  // optional
+  // type: ...,  // optional
+});
+console.log(result.data);
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **currency** | [**Currency**](../Models/.md) |  | [default to null] [enum: JPY, USD, EUR, TWD, KRW, PLN, GBP, HKD, SGD, NZD, AUD, IDR, MYR, PHP, THB, CNY, BRL, CHF, CAD, VND] |
+| **startTime** | **Date** | Query for records created after this time. | [optional] [default to null] |
+| **endTime** | **Date** | Query for records created before this time. | [optional] [default to null] |
+| **perPage** | **Integer** | How many objects per page. | [optional] [default to null] |
+| **page** | **Integer** | Page number to query for. | [optional] [default to null] |
+| **type** | **String** |  | [optional] [default to null] |
+
+### Return type
+
+[**BalanceTransactionList**](../Models/BalanceTransactionList.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ## listSettlements
 
@@ -55,6 +99,38 @@ console.log(result.data);
 ### Return type
 
 [**SettlementList**](../Models/SettlementList.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## showBalance
+
+> ShowBalance_200_response showBalance(currency)
+
+Balance: Show
+
+Given a currency, view the unsettled balance of the currently authenticated merchant.
+
+### Example
+
+```typescript
+const result = await api.showBalance({
+  currency: 'YOUR_ID',
+});
+console.log(result.data);
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **currency** | [**Currency**](../Models/.md) |  | [default to null] [enum: JPY, USD, EUR, TWD, KRW, PLN, GBP, HKD, SGD, NZD, AUD, IDR, MYR, PHP, THB, CNY, BRL, CHF, CAD, VND] |
+
+### Return type
+
+[**ShowBalance_200_response**](../Models/ShowBalance_200_response.md)
 
 ### HTTP request headers
 
@@ -191,11 +267,11 @@ null (empty response body)
 
 ## showTransaction
 
-> Transaction showTransaction(currency, transactionUuid)
+> List showTransaction(currency, transactionUuid)
 
 Balance: Transaction
 
-Retrieves a single ledger transaction by its UUID for the given currency.
+Retrieves a single ledger transaction by its UUID for the given currency. Will return one entry per line item of the transaction.
 
 ### Example
 
@@ -216,7 +292,7 @@ console.log(result.data);
 
 ### Return type
 
-[**Transaction**](../Models/Transaction.md)
+[**List**](../Models/Transaction.md)
 
 ### HTTP request headers
 

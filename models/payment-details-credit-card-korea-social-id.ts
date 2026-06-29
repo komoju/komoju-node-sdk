@@ -17,7 +17,6 @@
 /**
  * @type PaymentDetailsCreditCardKoreaSocialId
  * This attribute differs whether the payment card is personal or corporate card.  - For personal card, you should specify customer\'s date of birth. - For corporate card, you should specify payment card\'s corporate number.
- * @export
  */
 export type PaymentDetailsCreditCardKoreaSocialId = string;
 

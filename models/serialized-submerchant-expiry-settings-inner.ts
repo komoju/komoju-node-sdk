@@ -17,40 +17,22 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface SerializedSubmerchantExpirySettingsInner
- */
 export interface SerializedSubmerchantExpirySettingsInner {
     /**
      * Human-readable name of the payment method this expiry setting applies to.
-     * @type {string}
-     * @memberof SerializedSubmerchantExpirySettingsInner
      */
     'name': string;
     /**
      * Machine-readable slug identifying the payment method.
-     * @type {string}
-     * @memberof SerializedSubmerchantExpirySettingsInner
      */
     'slug': string;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof SerializedSubmerchantExpirySettingsInner
-     */
     'currency': Currency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SerializedSubmerchantExpirySettingsInner
      */
     'expiry_days': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SerializedSubmerchantExpirySettingsInner
      */
     'default_expiry_days': number;
 }

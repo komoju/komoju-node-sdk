@@ -16,8 +16,6 @@
 
 /**
  * 
- * @export
- * @enum {string}
  */
 
 export enum PaymentStatus {

@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -47,7 +47,6 @@ import type { TerminalError } from '../models';
 import type { UpdatePaymentRequest } from '../models';
 /**
  * PaymentsApi - axios parameter creator
- * @export
  */
 export const PaymentsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -62,7 +61,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'id' is not null or undefined
             assertParamExists('cancelPayment', 'id', id)
             const localVarPath = `/payments/{id}/cancel`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -78,8 +77,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -103,7 +102,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'capturePaymentRequest' is not null or undefined
             assertParamExists('capturePayment', 'capturePaymentRequest', capturePaymentRequest)
             const localVarPath = `/payments/{id}/capture`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -119,9 +118,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -159,9 +157,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -187,7 +184,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'createRefundRequestRequest' is not null or undefined
             assertParamExists('createRefundRequest', 'createRefundRequestRequest', createRefundRequestRequest)
             const localVarPath = `/payments/{id}/refund_request`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -203,9 +200,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -231,7 +227,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'finalizePaymentRequest' is not null or undefined
             assertParamExists('finalizePayment', 'finalizePaymentRequest', finalizePaymentRequest)
             const localVarPath = `/payments/{id}/finalize`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -247,9 +243,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -284,8 +279,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -362,8 +357,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
                 localVarQueryParameter['status'] = status;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -387,7 +382,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'refundPaymentRequest' is not null or undefined
             assertParamExists('refundPayment', 'refundPaymentRequest', refundPaymentRequest)
             const localVarPath = `/payments/{id}/refund`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -403,9 +398,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -428,7 +422,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showPayment', 'id', id)
             const localVarPath = `/payments/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -444,8 +438,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -469,7 +463,7 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'updatePaymentRequest' is not null or undefined
             assertParamExists('updatePayment', 'updatePaymentRequest', updatePaymentRequest)
             const localVarPath = `/payments/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -485,9 +479,8 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -504,7 +497,6 @@ export const PaymentsApiAxiosParamCreator = function (configuration?: Configurat
 
 /**
  * PaymentsApi - functional programming interface
- * @export
  */
 export const PaymentsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PaymentsApiAxiosParamCreator(configuration)
@@ -655,7 +647,6 @@ export const PaymentsApiFp = function(configuration?: Configuration) {
 
 /**
  * PaymentsApi - factory interface
- * @export
  */
 export const PaymentsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = PaymentsApiFp(configuration)
@@ -764,219 +755,132 @@ export const PaymentsApiFactory = function (configuration?: Configuration, baseP
 
 /**
  * Request parameters for cancelPayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiCancelPaymentRequest
  */
 export interface PaymentsApiCancelPaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiCancelPayment
      */
     readonly id: string
 }
 
 /**
  * Request parameters for capturePayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiCapturePaymentRequest
  */
 export interface PaymentsApiCapturePaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiCapturePayment
      */
     readonly id: string
 
-    /**
-     * 
-     * @type {CapturePaymentRequest}
-     * @memberof PaymentsApiCapturePayment
-     */
     readonly capturePaymentRequest: CapturePaymentRequest
 }
 
 /**
  * Request parameters for createPayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiCreatePaymentRequest
  */
 export interface PaymentsApiCreatePaymentRequest {
-    /**
-     * 
-     * @type {CreatePaymentRequest}
-     * @memberof PaymentsApiCreatePayment
-     */
     readonly createPaymentRequest: CreatePaymentRequest
 }
 
 /**
  * Request parameters for createRefundRequest operation in PaymentsApi.
- * @export
- * @interface PaymentsApiCreateRefundRequestRequest
  */
 export interface PaymentsApiCreateRefundRequestRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiCreateRefundRequest
      */
     readonly id: string
 
-    /**
-     * 
-     * @type {CreateRefundRequestRequest}
-     * @memberof PaymentsApiCreateRefundRequest
-     */
     readonly createRefundRequestRequest: CreateRefundRequestRequest
 }
 
 /**
  * Request parameters for finalizePayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiFinalizePaymentRequest
  */
 export interface PaymentsApiFinalizePaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiFinalizePayment
      */
     readonly id: string
 
-    /**
-     * 
-     * @type {FinalizePaymentRequest}
-     * @memberof PaymentsApiFinalizePayment
-     */
     readonly finalizePaymentRequest: FinalizePaymentRequest
 }
 
 /**
  * Request parameters for listPayments operation in PaymentsApi.
- * @export
- * @interface PaymentsApiListPaymentsRequest
  */
 export interface PaymentsApiListPaymentsRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof PaymentsApiListPayments
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof PaymentsApiListPayments
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof PaymentsApiListPayments
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof PaymentsApiListPayments
      */
     readonly page?: number
 
-    /**
-     * 
-     * @type {string}
-     * @memberof PaymentsApiListPayments
-     */
     readonly merchantId?: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof PaymentsApiListPayments
-     */
     readonly currency?: Currency
 
     /**
      * A unique ID from your application used to track this payment.
-     * @type {string}
-     * @memberof PaymentsApiListPayments
      */
     readonly externalOrderNum?: string
 
     /**
      * The status of the payment. Can be a single status or comma-separated values.
-     * @type {string}
-     * @memberof PaymentsApiListPayments
      */
     readonly status?: string
 }
 
 /**
  * Request parameters for refundPayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiRefundPaymentRequest
  */
 export interface PaymentsApiRefundPaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiRefundPayment
      */
     readonly id: string
 
-    /**
-     * 
-     * @type {RefundPaymentRequest}
-     * @memberof PaymentsApiRefundPayment
-     */
     readonly refundPaymentRequest: RefundPaymentRequest
 }
 
 /**
  * Request parameters for showPayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiShowPaymentRequest
  */
 export interface PaymentsApiShowPaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiShowPayment
      */
     readonly id: string
 }
 
 /**
  * Request parameters for updatePayment operation in PaymentsApi.
- * @export
- * @interface PaymentsApiUpdatePaymentRequest
  */
 export interface PaymentsApiUpdatePaymentRequest {
     /**
      * A unique identifier for the payment.
-     * @type {string}
-     * @memberof PaymentsApiUpdatePayment
      */
     readonly id: string
 
-    /**
-     * 
-     * @type {UpdatePaymentRequest}
-     * @memberof PaymentsApiUpdatePayment
-     */
     readonly updatePaymentRequest: UpdatePaymentRequest
 }
 
 /**
  * PaymentsApi - object-oriented interface
- * @export
- * @class PaymentsApi
- * @extends {BaseAPI}
  */
 export class PaymentsApi extends BaseAPI {
     /**
@@ -985,7 +889,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiCancelPaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public cancelPayment(requestParameters: PaymentsApiCancelPaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).cancelPayment(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -997,7 +900,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiCapturePaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public capturePayment(requestParameters: PaymentsApiCapturePaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).capturePayment(requestParameters.id, requestParameters.capturePaymentRequest, options).then((request) => request(this.axios, this.basePath));
@@ -1009,7 +911,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiCreatePaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public createPayment(requestParameters: PaymentsApiCreatePaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).createPayment(requestParameters.createPaymentRequest, options).then((request) => request(this.axios, this.basePath));
@@ -1021,7 +922,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiCreateRefundRequestRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public createRefundRequest(requestParameters: PaymentsApiCreateRefundRequestRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).createRefundRequest(requestParameters.id, requestParameters.createRefundRequestRequest, options).then((request) => request(this.axios, this.basePath));
@@ -1033,7 +933,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiFinalizePaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public finalizePayment(requestParameters: PaymentsApiFinalizePaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).finalizePayment(requestParameters.id, requestParameters.finalizePaymentRequest, options).then((request) => request(this.axios, this.basePath));
@@ -1044,7 +943,6 @@ export class PaymentsApi extends BaseAPI {
      * @summary Payment Method: List
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public listPaymentMethods(options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).listPaymentMethods(options).then((request) => request(this.axios, this.basePath));
@@ -1056,7 +954,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiListPaymentsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public listPayments(requestParameters: PaymentsApiListPaymentsRequest = {}, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).listPayments(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.merchantId, requestParameters.currency, requestParameters.externalOrderNum, requestParameters.status, options).then((request) => request(this.axios, this.basePath));
@@ -1068,7 +965,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiRefundPaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public refundPayment(requestParameters: PaymentsApiRefundPaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).refundPayment(requestParameters.id, requestParameters.refundPaymentRequest, options).then((request) => request(this.axios, this.basePath));
@@ -1080,7 +976,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiShowPaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public showPayment(requestParameters: PaymentsApiShowPaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).showPayment(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -1092,7 +987,6 @@ export class PaymentsApi extends BaseAPI {
      * @param {PaymentsApiUpdatePaymentRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PaymentsApi
      */
     public updatePayment(requestParameters: PaymentsApiUpdatePaymentRequest, options?: RawAxiosRequestConfig) {
         return PaymentsApiFp(this.configuration).updatePayment(requestParameters.id, requestParameters.updatePaymentRequest, options).then((request) => request(this.axios, this.basePath));

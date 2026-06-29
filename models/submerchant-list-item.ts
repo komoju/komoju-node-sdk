@@ -17,78 +17,46 @@
 // @ts-ignore
 import type { MerchantRole } from './merchant-role';
 
-/**
- * 
- * @export
- * @interface SubmerchantListItem
- */
 export interface SubmerchantListItem {
     /**
      * Unique identifier for this sub-merchant.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'id': string;
     /**
      * Whether this merchant is operating in live (production) mode.
-     * @type {boolean}
-     * @memberof SubmerchantListItem
      */
     'live': boolean;
     /**
      * Timestamp when this merchant was created.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'created_at': string;
     /**
      * Timestamp when this merchant record was last updated.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'updated_at': string;
     /**
      * Account identifier associated with this merchant.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'account_id': string;
     /**
      * Display name of the sub-merchant.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'name': string;
-    /**
-     * 
-     * @type {MerchantRole}
-     * @memberof SubmerchantListItem
-     */
     'platform_role': MerchantRole;
     /**
      * Account application status of the merchant.
-     * @type {string}
-     * @memberof SubmerchantListItem
      */
     'status': SubmerchantListItemStatusEnum;
     /**
      * Whether payments are enabled for this merchant.
-     * @type {boolean}
-     * @memberof SubmerchantListItem
      */
     'payments_enabled': boolean;
     /**
      * Whether payouts are enabled for this merchant.
-     * @type {boolean}
-     * @memberof SubmerchantListItem
      */
     'payouts_enabled': boolean;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum SubmerchantListItemStatusEnum {
     Accepted = 'accepted',
     Declined = 'declined'

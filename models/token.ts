@@ -17,42 +17,22 @@
 // @ts-ignore
 import type { TokenPaymentDetails } from './token-payment-details';
 
-/**
- * 
- * @export
- * @interface Token
- */
 export interface Token {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof Token
      */
     'id': string;
     /**
      * Resource type name, always \"token\".
-     * @type {string}
-     * @memberof Token
      */
     'resource': TokenResourceEnum;
     /**
      * Timestamp when the token was created.
-     * @type {string}
-     * @memberof Token
      */
     'created_at': string;
-    /**
-     * 
-     * @type {TokenPaymentDetails}
-     * @memberof Token
-     */
     'payment_details': TokenPaymentDetails;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum TokenResourceEnum {
     Token = 'token'
 }

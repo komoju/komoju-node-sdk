@@ -14,40 +14,25 @@
 
 
 
-/**
- * 
- * @export
- * @interface LineItem
- */
 export interface LineItem {
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof LineItem
      */
     'amount'?: number;
     /**
      * Display name or description of the product or service.
-     * @type {string}
-     * @memberof LineItem
      */
     'description'?: string;
     /**
      * The default value is 1 if none is given.
-     * @type {number}
-     * @memberof LineItem
      */
     'quantity'?: number;
     /**
      * URL to an image representing this line item, shown on the session page.
-     * @type {string}
-     * @memberof LineItem
      */
     'image'?: string;
     /**
      * Merchant\'s internal product or SKU identifier.
-     * @type {string}
-     * @memberof LineItem
      */
     'external_product_num'?: string;
 }

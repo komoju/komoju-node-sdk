@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,7 +29,6 @@ import type { CreateTokenRequest } from '../models';
 import type { Token } from '../models';
 /**
  * TokensApi - axios parameter creator
- * @export
  */
 export const TokensApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -59,9 +58,8 @@ export const TokensApiAxiosParamCreator = function (configuration?: Configuratio
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -78,7 +76,6 @@ export const TokensApiAxiosParamCreator = function (configuration?: Configuratio
 
 /**
  * TokensApi - functional programming interface
- * @export
  */
 export const TokensApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TokensApiAxiosParamCreator(configuration)
@@ -101,7 +98,6 @@ export const TokensApiFp = function(configuration?: Configuration) {
 
 /**
  * TokensApi - factory interface
- * @export
  */
 export const TokensApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = TokensApiFp(configuration)
@@ -121,23 +117,13 @@ export const TokensApiFactory = function (configuration?: Configuration, basePat
 
 /**
  * Request parameters for createToken operation in TokensApi.
- * @export
- * @interface TokensApiCreateTokenRequest
  */
 export interface TokensApiCreateTokenRequest {
-    /**
-     * 
-     * @type {CreateTokenRequest}
-     * @memberof TokensApiCreateToken
-     */
     readonly createTokenRequest: CreateTokenRequest
 }
 
 /**
  * TokensApi - object-oriented interface
- * @export
- * @class TokensApi
- * @extends {BaseAPI}
  */
 export class TokensApi extends BaseAPI {
     /**
@@ -146,7 +132,6 @@ export class TokensApi extends BaseAPI {
      * @param {TokensApiCreateTokenRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof TokensApi
      */
     public createToken(requestParameters: TokensApiCreateTokenRequest, options?: RawAxiosRequestConfig) {
         return TokensApiFp(this.configuration).createToken(requestParameters.createTokenRequest, options).then((request) => request(this.axios, this.basePath));

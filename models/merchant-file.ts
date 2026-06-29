@@ -14,52 +14,33 @@
 
 
 
-/**
- * 
- * @export
- * @interface MerchantFile
- */
 export interface MerchantFile {
     /**
      * Unique identifier for this file.
-     * @type {string}
-     * @memberof MerchantFile
      */
     'id': string;
     /**
      * Resource type name, always \"file\".
-     * @type {string}
-     * @memberof MerchantFile
      */
     'resource': string;
     /**
      * Original filename of the uploaded file.
-     * @type {string}
-     * @memberof MerchantFile
      */
     'filename': string;
     /**
      * File size in bytes.
-     * @type {number}
-     * @memberof MerchantFile
      */
     'size': number;
     /**
      * MIME type of the uploaded file (e.g. \"application/pdf\").
-     * @type {string}
-     * @memberof MerchantFile
      */
     'mime_type': string;
     /**
      * Timestamp when the file was uploaded.
-     * @type {string}
-     * @memberof MerchantFile
      */
     'created_at': string;
     /**
      * Timestamp when the file record was last updated.
-     * @type {string}
-     * @memberof MerchantFile
      */
     'updated_at': string;
 }

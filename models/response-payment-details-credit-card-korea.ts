@@ -16,143 +16,90 @@
 
 /**
  * 
- * @export
- * @interface ResponsePaymentDetailsCreditCardKorea
  */
 export interface ResponsePaymentDetailsCreditCardKorea {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'type': ResponsePaymentDetailsCreditCardKoreaTypeEnum;
     /**
      * Card brand (e.g. \"visa\", \"mastercard\", \"jcb\").
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'brand': string;
     /**
      * Last four digits of the card number.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'last_four_digits': string;
     /**
      * Credit card expiration month.
-     * @type {number}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'month': number;
     /**
      * Credit card expiration year.  If this value is less than 100, it will be treated as two digits year in the current century. E.g. If current year is `2024`, `99` means `2099`.
-     * @type {number}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'year': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
-     */
     'verification_value'?: ResponsePaymentDetailsCreditCardKoreaVerificationValueEnum;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardKorea
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardKoreaTypeEnum {
     CreditCardKorea = 'credit_card_korea'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardKoreaVerificationValueEnum {
     Approved = 'Approved',
     Invalid = 'Invalid',

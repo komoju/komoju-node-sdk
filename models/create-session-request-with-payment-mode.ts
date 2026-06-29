@@ -31,88 +31,49 @@ import type { PaymentType } from './payment-type';
 
 /**
  * 
- * @export
- * @interface CreateSessionRequestWithPaymentMode
  */
 export interface CreateSessionRequestWithPaymentMode {
     /**
-     * In `payment` mode, a payment will be created after customer has completed the session.
-     * @type {string}
-     * @memberof CreateSessionRequestWithPaymentMode
+     * In `payment` mode, a payment will be created after customer has completed the session.  `payment` is the default mode and may be omitted.
      */
-    'mode': CreateSessionRequestWithPaymentModeModeEnum;
+    'mode'?: CreateSessionRequestWithPaymentModeModeEnum;
     /**
-     * Specify the URL where user will be redirected to after they have completed or aborted the session. A `session_id` will be appended to this URL as a query parameter.
-     * @type {string}
-     * @memberof CreateSessionRequestWithPaymentMode
-     */
-    'return_url'?: string;
-    /**
-     * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateSessionRequestWithPaymentMode
+     * Amount greater than 0, in the lowest denomination of the currency (e.g. cents for USD).
      */
     'amount': number;
     /**
-     * 
-     * @type {Currency}
-     * @memberof CreateSessionRequestWithPaymentMode
+     * Specify the URL where user will be redirected to after they have completed or aborted the session. A `session_id` will be appended to this URL as a query parameter.
      */
+    'return_url'?: string;
     'currency': Currency;
     /**
      * Customer\'s email address.
-     * @type {string}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'email'?: string;
     /**
      * Time in seconds until the session expires after being created.  The default value and upper limit are 86,400 seconds (24 hours).
-     * @type {number}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'expires_in_seconds'?: number;
     /**
      * An unique identifier of your customer. If your system has the concept of user accounts, then the ID of the current logged in user would be appropriate.
-     * @type {string}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'external_customer_id'?: string;
     /**
      * Specify which payment types are available for this session.  By default, all activated payment methods will be available for the session if this value is omitted.
-     * @type {Array<PaymentType>}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'payment_types'?: Array<PaymentType>;
-    /**
-     * 
-     * @type {Locale}
-     * @memberof CreateSessionRequestWithPaymentMode
-     */
     'default_locale'?: Locale;
     /**
      * Specify the line items which will be displayed on the session page.
-     * @type {Array<LineItem>}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'line_items'?: Array<LineItem>;
     /**
      * Store any additional data you want to associate with the session. The object\'s keys and values must be strings. Keys have a maximum length of 30 characters. Values have a maximum length of 2000 characters.
-     * @type {object}
-     * @memberof CreateSessionRequestWithPaymentMode
      */
     'metadata'?: object;
-    /**
-     * 
-     * @type {PaymentDataRequest}
-     * @memberof CreateSessionRequestWithPaymentMode
-     */
     'payment_data'?: PaymentDataRequest;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum CreateSessionRequestWithPaymentModeModeEnum {
     Payment = 'payment'
 }

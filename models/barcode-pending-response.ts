@@ -14,30 +14,17 @@
 
 
 
-/**
- * 
- * @export
- * @interface BarcodePendingResponse
- */
 export interface BarcodePendingResponse {
     /**
      * Barcode generation is pending
-     * @type {string}
-     * @memberof BarcodePendingResponse
      */
     'status': BarcodePendingResponseStatusEnum;
     /**
      * Request may be retried after specified amount of seconds
-     * @type {number}
-     * @memberof BarcodePendingResponse
      */
     'retry_after': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum BarcodePendingResponseStatusEnum {
     Pending = 'pending'
 }

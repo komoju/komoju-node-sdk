@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Payment } from './payment';
 
-/**
- * 
- * @export
- * @interface PaymentList
- */
 export interface PaymentList {
     /**
      * Resource type name, always \"payment_list\".
-     * @type {string}
-     * @memberof PaymentList
      */
     'resource': string;
     /**
      * Array of payment objects for this page.
-     * @type {Array<Payment>}
-     * @memberof PaymentList
      */
     'data': Array<Payment>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof PaymentList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof PaymentList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof PaymentList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof PaymentList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof PaymentList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof PaymentList
      */
     'last_page': number;
 }

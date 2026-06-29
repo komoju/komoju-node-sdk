@@ -17,34 +17,15 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface CreateMerchantBalanceTransferRequest
- */
 export interface CreateMerchantBalanceTransferRequest {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof CreateMerchantBalanceTransferRequest
      */
     'merchant_id'?: string;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateMerchantBalanceTransferRequest
-     */
     'currency': Currency;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateMerchantBalanceTransferRequest
-     */
     'to': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateMerchantBalanceTransferRequest
      */
     'amount': number;
 }

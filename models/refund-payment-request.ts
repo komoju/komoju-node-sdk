@@ -17,29 +17,12 @@
 // @ts-ignore
 import type { PlatformDetails } from './platform-details';
 
-/**
- * 
- * @export
- * @interface RefundPaymentRequest
- */
 export interface RefundPaymentRequest {
     /**
      * The payment amount before tax, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof RefundPaymentRequest
      */
     'amount'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RefundPaymentRequest
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof RefundPaymentRequest
-     */
     'platform_details'?: PlatformDetails;
 }
 

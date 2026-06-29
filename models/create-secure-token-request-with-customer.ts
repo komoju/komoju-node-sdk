@@ -22,39 +22,18 @@ import type { ProcessingMerchant } from './processing-merchant';
 
 /**
  * 
- * @export
- * @interface CreateSecureTokenRequestWithCustomer
  */
 export interface CreateSecureTokenRequestWithCustomer {
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateSecureTokenRequestWithCustomer
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateSecureTokenRequestWithCustomer
-     */
     'currency': Currency;
     /**
      * To use instead of `payment_details`, specify customer\'s identifier for this SecureToken.  This identifier can be obtained from [Customer: Create](https://doc.komoju.com/reference/createcustomer) endpoint.
-     * @type {string}
-     * @memberof CreateSecureTokenRequestWithCustomer
      */
     'customer': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSecureTokenRequestWithCustomer
-     */
     'return_url': string;
-    /**
-     * 
-     * @type {ProcessingMerchant}
-     * @memberof CreateSecureTokenRequestWithCustomer
-     */
     'platform_details'?: ProcessingMerchant;
 }
 

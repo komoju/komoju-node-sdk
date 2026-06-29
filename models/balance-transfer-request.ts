@@ -14,23 +14,11 @@
 
 
 
-/**
- * 
- * @export
- * @interface BalanceTransferRequest
- */
 export interface BalanceTransferRequest {
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof BalanceTransferRequest
      */
     'amount': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BalanceTransferRequest
-     */
     'to': string;
 }
 

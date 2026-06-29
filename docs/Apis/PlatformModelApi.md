@@ -8,7 +8,7 @@ All URIs are relative to *https://komoju.com/api/v1*
 | [**createFile**](PlatformModelApi.md#createFile) | **POST** /merchants/{merchant_id}/files | File: Create |
 | [**createMerchant**](PlatformModelApi.md#createMerchant) | **POST** /merchants | Merchant: Create |
 | [**createMerchantBalanceTransfer**](PlatformModelApi.md#createMerchantBalanceTransfer) | **POST** /merchants/{merchant_id}/balances/{currency}/transfer | Balance: Transfer |
-| [**editMerchantBalanceSettings**](PlatformModelApi.md#editMerchantBalanceSettings) | **PATCH** /merchants/{merchant_id}/balances/{currency}/settings | Balances: Edit Settings |
+| [**editMerchantBalanceSettings**](PlatformModelApi.md#editMerchantBalanceSettings) | **PUT** /merchants/{merchant_id}/balances/{currency}/settings | Balances: Edit Settings |
 | [**listLiveApplicationPaymentMethods**](PlatformModelApi.md#listLiveApplicationPaymentMethods) | **GET** /live_application/{merchant_id}/payment_methods | Live Application: Payment Methods |
 | [**listMerchants**](PlatformModelApi.md#listMerchants) | **GET** /merchants | Merchant: List |
 | [**listSubmerchantPayments**](PlatformModelApi.md#listSubmerchantPayments) | **GET** /merchants/{merchant_id}/payments | Payment: List for Merchant |
@@ -499,7 +499,7 @@ console.log(result.data);
 
 ## showLiveApplicationPaymentMethod
 
-> LiveApplicationWithSubmittedFields showLiveApplicationPaymentMethod(merchantId, paymentMethod, locale)
+> PaymentMethodApplicationWithSubmittedFields showLiveApplicationPaymentMethod(merchantId, paymentMethod, locale)
 
 Live Application: Show Payment Method
 
@@ -526,7 +526,7 @@ console.log(result.data);
 
 ### Return type
 
-[**LiveApplicationWithSubmittedFields**](../Models/LiveApplicationWithSubmittedFields.md)
+[**PaymentMethodApplicationWithSubmittedFields**](../Models/PaymentMethodApplicationWithSubmittedFields.md)
 
 ### HTTP request headers
 
@@ -917,7 +917,7 @@ console.log(result.data);
 
 ## updateLiveApplicationPaymentMethod
 
-> LiveApplication updateLiveApplicationPaymentMethod(merchantId, paymentMethod, updatePaymentMethodRequest)
+> PaymentMethodApplication updateLiveApplicationPaymentMethod(merchantId, paymentMethod, updatePaymentMethodRequest)
 
 Live Application: Update Payment Method
 
@@ -946,7 +946,7 @@ console.log(result.data);
 
 ### Return type
 
-[**LiveApplication**](../Models/LiveApplication.md)
+[**PaymentMethodApplication**](../Models/PaymentMethodApplication.md)
 
 ### HTTP request headers
 

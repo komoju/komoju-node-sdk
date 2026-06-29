@@ -20,36 +20,15 @@ import type { FraudDetails } from './fraud-details';
 // @ts-ignore
 import type { PaymentDetailsAll } from './payment-details-all';
 
-/**
- * 
- * @export
- * @interface PaySessionRequest
- */
 export interface PaySessionRequest {
     /**
      * Default: auto
-     * @type {string}
-     * @memberof PaySessionRequest
      */
     'capture'?: PaySessionRequestCaptureEnum;
-    /**
-     * 
-     * @type {PaymentDetailsAll}
-     * @memberof PaySessionRequest
-     */
     'payment_details': PaymentDetailsAll;
-    /**
-     * 
-     * @type {FraudDetails}
-     * @memberof PaySessionRequest
-     */
     'fraud_details'?: FraudDetails;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaySessionRequestCaptureEnum {
     Auto = 'auto',
     Manual = 'manual'

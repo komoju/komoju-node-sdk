@@ -20,34 +20,15 @@ import type { Currency } from './currency';
 // @ts-ignore
 import type { SettlementFrequency } from './settlement-frequency';
 
-/**
- * 
- * @export
- * @interface EditMerchantBalanceSettingsRequest
- */
 export interface EditMerchantBalanceSettingsRequest {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof EditMerchantBalanceSettingsRequest
      */
     'merchant_id'?: string;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof EditMerchantBalanceSettingsRequest
-     */
     'currency': Currency;
-    /**
-     * 
-     * @type {SettlementFrequency}
-     * @memberof EditMerchantBalanceSettingsRequest
-     */
     'frequency': SettlementFrequency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof EditMerchantBalanceSettingsRequest
      */
     'settlement_minimum_amount': number;
 }

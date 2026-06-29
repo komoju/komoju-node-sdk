@@ -16,130 +16,86 @@
 
 /**
  * 
- * @export
- * @interface ResponsePaymentDetailsAU
  */
 export interface ResponsePaymentDetailsAU {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'type': ResponsePaymentDetailsAUTypeEnum;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'email': string;
     /**
      * URL to redirect the customer to for completing the au payment.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'redirect_url'?: string;
     /**
      * Transaction identifier returned by au.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'transaction_id'?: string;
     /**
      * Payment information number for this au transaction.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'pay_info_no'?: string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsAU
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsAUTypeEnum {
     Au = 'au'
 }

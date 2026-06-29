@@ -14,23 +14,38 @@
 
 
 
-/**
- * 
- * @export
- * @interface FieldFieldProperties
- */
 export interface FieldFieldProperties {
     /**
      * Array of URLs to external resources relevant to this field.
-     * @type {Array<string>}
-     * @memberof FieldFieldProperties
      */
-    'external_links': Array<string>;
+    'external_links'?: Array<string>;
     /**
      * Minimum character length for the field value.
-     * @type {number}
-     * @memberof FieldFieldProperties
      */
-    'minLength': number;
+    'minLength'?: number;
+    /**
+     * Semantic format hint for the field value (e.g. \"date\", \"email\").
+     */
+    'format'?: string;
+    /**
+     * Regular expression the field value must match.
+     */
+    'pattern'?: string;
+    /**
+     * Minimum numeric value for integer fields.
+     */
+    'minimum'?: number;
+    /**
+     * Maximum numeric value for integer fields.
+     */
+    'maximum'?: number;
+    /**
+     * Map of human-readable labels to enum codes for dropdown/radio fields.
+     */
+    'enum'?: object;
+    /**
+     * Schema describing each item in an array field.
+     */
+    'items'?: object;
 }
 

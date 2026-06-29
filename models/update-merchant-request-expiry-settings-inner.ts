@@ -17,36 +17,12 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface UpdateMerchantRequestExpirySettingsInner
- */
 export interface UpdateMerchantRequestExpirySettingsInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateMerchantRequestExpirySettingsInner
-     */
     'slug'?: UpdateMerchantRequestExpirySettingsInnerSlugEnum;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof UpdateMerchantRequestExpirySettingsInner
-     */
     'currency'?: Currency;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateMerchantRequestExpirySettingsInner
-     */
     'expiry_days': number;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum UpdateMerchantRequestExpirySettingsInnerSlugEnum {
     BankTransfer = 'bank_transfer',
     Konbini = 'konbini'

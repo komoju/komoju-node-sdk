@@ -17,46 +17,26 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface Transfer
- */
 export interface Transfer {
     /**
      * The type identifier for this transfer record.
-     * @type {string}
-     * @memberof Transfer
      */
     'type': string;
     /**
      * Identifier of the merchant receiving the funds.
-     * @type {string}
-     * @memberof Transfer
      */
     'recipient': string;
     /**
      * Identifier of the merchant sending the funds.
-     * @type {string}
-     * @memberof Transfer
      */
     'remitter': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Transfer
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof Transfer
-     */
     'currency': Currency;
     /**
      * Timestamp when the transfer occurred.
-     * @type {string}
-     * @memberof Transfer
      */
     'happened_at': string;
 }

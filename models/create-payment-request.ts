@@ -43,7 +43,6 @@ import type { StatementDescriptor } from './statement-descriptor';
 
 /**
  * @type CreatePaymentRequest
- * @export
  */
 export type CreatePaymentRequest = CreatePaymentRequestWithCustomer | CreatePaymentRequestWithPaymentDetails;
 

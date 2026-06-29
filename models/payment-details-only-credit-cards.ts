@@ -37,7 +37,6 @@ import type { PaymentDetailsCreditCardTerminal } from './payment-details-credit-
 
 /**
  * @type PaymentDetailsOnlyCreditCards
- * @export
  */
 export type PaymentDetailsOnlyCreditCards = { type: 'credit_card' } & PaymentDetailsCreditCard | { type: 'credit_card_brazil' } & PaymentDetailsCreditCardBrazil | { type: 'credit_card_korea' } & PaymentDetailsCreditCardKorea | { type: 'credit_card_terminal' } & PaymentDetailsCreditCardTerminal;
 

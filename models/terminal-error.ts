@@ -17,17 +17,7 @@
 // @ts-ignore
 import type { TerminalErrorBody } from './terminal-error-body';
 
-/**
- * 
- * @export
- * @interface TerminalError
- */
 export interface TerminalError {
-    /**
-     * 
-     * @type {TerminalErrorBody}
-     * @memberof TerminalError
-     */
     'error': TerminalErrorBody;
 }
 

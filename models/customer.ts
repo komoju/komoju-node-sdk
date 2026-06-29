@@ -20,60 +20,31 @@ import type { CustomerSource } from './customer-source';
 // @ts-ignore
 import type { Locale } from './locale';
 
-/**
- * 
- * @export
- * @interface Customer
- */
 export interface Customer {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof Customer
      */
     'id': string;
     /**
      * Resource type name, always \"customer\".
-     * @type {string}
-     * @memberof Customer
      */
     'resource': CustomerResourceEnum;
     /**
      * Customer\'s email address, or null if not provided.
-     * @type {string}
-     * @memberof Customer
      */
     'email': string | null;
-    /**
-     * 
-     * @type {CustomerSource}
-     * @memberof Customer
-     */
     'source': CustomerSource | null;
     /**
      * Arbitrary key-value metadata attached to this customer.
-     * @type {object}
-     * @memberof Customer
      */
     'metadata': object;
     /**
      * Timestamp when the customer was created.
-     * @type {string}
-     * @memberof Customer
      */
     'created_at': string;
-    /**
-     * 
-     * @type {Locale}
-     * @memberof Customer
-     */
     'locale'?: Locale;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum CustomerResourceEnum {
     Customer = 'customer'
 }

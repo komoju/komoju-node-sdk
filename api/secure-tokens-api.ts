@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,7 +29,6 @@ import type { CreateSecureTokenRequest } from '../models';
 import type { SecureToken } from '../models';
 /**
  * SecureTokensApi - axios parameter creator
- * @export
  */
 export const SecureTokensApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -59,9 +58,8 @@ export const SecureTokensApiAxiosParamCreator = function (configuration?: Config
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -84,7 +82,7 @@ export const SecureTokensApiAxiosParamCreator = function (configuration?: Config
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSecureToken', 'id', id)
             const localVarPath = `/secure_tokens/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -100,8 +98,8 @@ export const SecureTokensApiAxiosParamCreator = function (configuration?: Config
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -116,7 +114,6 @@ export const SecureTokensApiAxiosParamCreator = function (configuration?: Config
 
 /**
  * SecureTokensApi - functional programming interface
- * @export
  */
 export const SecureTokensApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SecureTokensApiAxiosParamCreator(configuration)
@@ -152,7 +149,6 @@ export const SecureTokensApiFp = function(configuration?: Configuration) {
 
 /**
  * SecureTokensApi - factory interface
- * @export
  */
 export const SecureTokensApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = SecureTokensApiFp(configuration)
@@ -182,37 +178,23 @@ export const SecureTokensApiFactory = function (configuration?: Configuration, b
 
 /**
  * Request parameters for createSecureToken operation in SecureTokensApi.
- * @export
- * @interface SecureTokensApiCreateSecureTokenRequest
  */
 export interface SecureTokensApiCreateSecureTokenRequest {
-    /**
-     * 
-     * @type {CreateSecureTokenRequest}
-     * @memberof SecureTokensApiCreateSecureToken
-     */
     readonly createSecureTokenRequest: CreateSecureTokenRequest
 }
 
 /**
  * Request parameters for showSecureToken operation in SecureTokensApi.
- * @export
- * @interface SecureTokensApiShowSecureTokenRequest
  */
 export interface SecureTokensApiShowSecureTokenRequest {
     /**
      * A unique identifier for the SecureToken.
-     * @type {string}
-     * @memberof SecureTokensApiShowSecureToken
      */
     readonly id: string
 }
 
 /**
  * SecureTokensApi - object-oriented interface
- * @export
- * @class SecureTokensApi
- * @extends {BaseAPI}
  */
 export class SecureTokensApi extends BaseAPI {
     /**
@@ -221,7 +203,6 @@ export class SecureTokensApi extends BaseAPI {
      * @param {SecureTokensApiCreateSecureTokenRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SecureTokensApi
      */
     public createSecureToken(requestParameters: SecureTokensApiCreateSecureTokenRequest, options?: RawAxiosRequestConfig) {
         return SecureTokensApiFp(this.configuration).createSecureToken(requestParameters.createSecureTokenRequest, options).then((request) => request(this.axios, this.basePath));
@@ -233,7 +214,6 @@ export class SecureTokensApi extends BaseAPI {
      * @param {SecureTokensApiShowSecureTokenRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SecureTokensApi
      */
     public showSecureToken(requestParameters: SecureTokensApiShowSecureTokenRequest, options?: RawAxiosRequestConfig) {
         return SecureTokensApiFp(this.configuration).showSecureToken(requestParameters.id, options).then((request) => request(this.axios, this.basePath));

@@ -43,7 +43,6 @@ import type { SharedDetailsRefunds } from './shared-details-refunds';
 
 /**
  * @type BalanceShow
- * @export
  */
 export type BalanceShow = Balance & SharedDetails;
 

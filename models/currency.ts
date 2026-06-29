@@ -16,8 +16,6 @@
 
 /**
  * 3-letter ISO currency code.
- * @export
- * @enum {string}
  */
 
 export enum Currency {

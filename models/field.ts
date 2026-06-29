@@ -17,46 +17,26 @@
 // @ts-ignore
 import type { FieldFieldProperties } from './field-field-properties';
 
-/**
- * 
- * @export
- * @interface Field
- */
 export interface Field {
     /**
      * The input type for this field (e.g. \"text\", \"file\", \"boolean\").
-     * @type {string}
-     * @memberof Field
      */
     'field_type': string;
     /**
      * Machine-readable key name of the field.
-     * @type {string}
-     * @memberof Field
      */
     'field': string;
     /**
      * Human-readable display name of the field.
-     * @type {string}
-     * @memberof Field
      */
     'field_name': string;
-    /**
-     * 
-     * @type {FieldFieldProperties}
-     * @memberof Field
-     */
     'field_properties': FieldFieldProperties;
     /**
      * Display order position of this field in the application form.
-     * @type {number}
-     * @memberof Field
      */
     'position': number;
     /**
      * Whether this field is optional (true) or required (false).
-     * @type {boolean}
-     * @memberof Field
      */
     'optional': boolean;
 }

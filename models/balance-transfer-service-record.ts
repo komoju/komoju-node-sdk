@@ -17,46 +17,26 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface BalanceTransferServiceRecord
- */
 export interface BalanceTransferServiceRecord {
     /**
      * The type identifier for this balance transfer record.
-     * @type {string}
-     * @memberof BalanceTransferServiceRecord
      */
     'type': string;
     /**
      * Identifier of the merchant receiving the funds.
-     * @type {string}
-     * @memberof BalanceTransferServiceRecord
      */
     'recipient': string;
     /**
      * Identifier of the merchant sending the funds.
-     * @type {string}
-     * @memberof BalanceTransferServiceRecord
      */
     'remitter': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof BalanceTransferServiceRecord
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof BalanceTransferServiceRecord
-     */
     'currency': Currency;
     /**
      * Timestamp when the balance transfer occurred.
-     * @type {string}
-     * @memberof BalanceTransferServiceRecord
      */
     'happened_at': string;
 }

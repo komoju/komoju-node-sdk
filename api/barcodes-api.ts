@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -27,7 +27,6 @@ import type { APIError } from '../models';
 import type { ShowBarcodeResponse } from '../models';
 /**
  * BarcodesApi - axios parameter creator
- * @export
  */
 export const BarcodesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -42,7 +41,7 @@ export const BarcodesApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'paymentId' is not null or undefined
             assertParamExists('showBarcode', 'paymentId', paymentId)
             const localVarPath = `/barcodes/{payment_id}`
-                .replace(`{${"payment_id"}}`, encodeURIComponent(String(paymentId)));
+                .replace('{payment_id}', encodeURIComponent(String(paymentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -54,12 +53,8 @@ export const BarcodesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication api_key required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -74,7 +69,6 @@ export const BarcodesApiAxiosParamCreator = function (configuration?: Configurat
 
 /**
  * BarcodesApi - functional programming interface
- * @export
  */
 export const BarcodesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BarcodesApiAxiosParamCreator(configuration)
@@ -97,7 +91,6 @@ export const BarcodesApiFp = function(configuration?: Configuration) {
 
 /**
  * BarcodesApi - factory interface
- * @export
  */
 export const BarcodesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = BarcodesApiFp(configuration)
@@ -117,23 +110,16 @@ export const BarcodesApiFactory = function (configuration?: Configuration, baseP
 
 /**
  * Request parameters for showBarcode operation in BarcodesApi.
- * @export
- * @interface BarcodesApiShowBarcodeRequest
  */
 export interface BarcodesApiShowBarcodeRequest {
     /**
      * Payment unique identifier
-     * @type {string}
-     * @memberof BarcodesApiShowBarcode
      */
     readonly paymentId: string
 }
 
 /**
  * BarcodesApi - object-oriented interface
- * @export
- * @class BarcodesApi
- * @extends {BaseAPI}
  */
 export class BarcodesApi extends BaseAPI {
     /**
@@ -142,7 +128,6 @@ export class BarcodesApi extends BaseAPI {
      * @param {BarcodesApiShowBarcodeRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BarcodesApi
      */
     public showBarcode(requestParameters: BarcodesApiShowBarcodeRequest, options?: RawAxiosRequestConfig) {
         return BarcodesApiFp(this.configuration).showBarcode(requestParameters.paymentId, options).then((request) => request(this.axios, this.basePath));

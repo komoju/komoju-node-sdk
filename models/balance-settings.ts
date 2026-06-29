@@ -20,28 +20,11 @@ import type { Currency } from './currency';
 // @ts-ignore
 import type { SettlementFrequency } from './settlement-frequency';
 
-/**
- * 
- * @export
- * @interface BalanceSettings
- */
 export interface BalanceSettings {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof BalanceSettings
-     */
     'currency': Currency;
-    /**
-     * 
-     * @type {SettlementFrequency}
-     * @memberof BalanceSettings
-     */
     'frequency': SettlementFrequency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof BalanceSettings
      */
     'settlement_minimum_amount': number;
 }

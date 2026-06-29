@@ -15,34 +15,17 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { CapturePaymentRequestTax } from './capture-payment-request-tax';
+import type { CreatePaymentRequestWithPaymentDetailsTax } from './create-payment-request-with-payment-details-tax';
 // May contain unused imports in some cases
 // @ts-ignore
 import type { PlatformDetails } from './platform-details';
 
-/**
- * 
- * @export
- * @interface CapturePaymentRequest
- */
 export interface CapturePaymentRequest {
     /**
      * The payment amount before tax, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CapturePaymentRequest
      */
     'amount'?: number;
-    /**
-     * 
-     * @type {CapturePaymentRequestTax}
-     * @memberof CapturePaymentRequest
-     */
-    'tax'?: CapturePaymentRequestTax;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof CapturePaymentRequest
-     */
+    'tax'?: CreatePaymentRequestWithPaymentDetailsTax;
     'platform_details'?: PlatformDetails;
 }
 

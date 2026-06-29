@@ -17,66 +17,38 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface CreateDisbursementRequest
- */
 export interface CreateDisbursementRequest {
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateDisbursementRequest
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateDisbursementRequest
-     */
     'currency': Currency;
     /**
      * Recipient\'s bank account number.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'account_number': string;
     /**
      * Type of the recipient\'s bank account.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'account_type': CreateDisbursementRequestAccountTypeEnum;
     /**
      * Name of the recipient bank account holder in katakana.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'account_name_kana': string;
     /**
      * 4-digit Zengin bank code.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'bank_code': string;
     /**
      * 3-digit Zengin branch code.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'branch_code': string;
     /**
      * Merchant-assigned external reference ID for this disbursement.
-     * @type {string}
-     * @memberof CreateDisbursementRequest
      */
     'external_id'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum CreateDisbursementRequestAccountTypeEnum {
     Ordinary = 'ordinary',
     Checking = 'checking'

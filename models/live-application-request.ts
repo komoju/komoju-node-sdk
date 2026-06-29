@@ -29,636 +29,376 @@ import type { Locale } from './locale';
 // @ts-ignore
 import type { SettlementFrequency } from './settlement-frequency';
 
-/**
- * 
- * @export
- * @interface LiveApplicationRequest
- */
 export interface LiveApplicationRequest {
-    /**
-     * 
-     * @type {Locale}
-     * @memberof LiveApplicationRequest
-     */
     'locale'?: Locale;
     /**
      * Whether the merchant has agreed to KOMOJU\'s terms of service.
-     * @type {boolean}
-     * @memberof LiveApplicationRequest
      */
     'service_agreement.agreed_to_tos'?: boolean;
     /**
      * Registered legal name of the company.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_name'?: string;
     /**
      * Company contact phone number.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_phone'?: string;
-    /**
-     * 
-     * @type {CountryCode}
-     * @memberof LiveApplicationRequest
-     */
     'company_information.company_country'?: CountryCode;
     /**
      * Whether the business is a sole proprietorship or corporation.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.corporation_type'?: LiveApplicationRequestCompanyInformationCorporationTypeEnum;
     /**
      * Postal code of the company\'s registered address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_postal_code'?: string;
     /**
      * Prefecture or state of the company\'s registered address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_prefecture_state'?: string;
     /**
      * Prefecture or state in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_prefecture_state_kana'?: string;
     /**
      * City of the company\'s registered address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_city'?: string;
     /**
      * City name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_city_kana'?: string;
     /**
      * Street address of the company.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_address'?: string;
     /**
      * Description of the industry the company operates in.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.industry_description'?: string;
     /**
      * Description of the company\'s business activities and products/services sold.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.business_description'?: string;
     /**
      * Number of employees at the company.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.employee_number'?: string;
     /**
      * Date the company was established (YYYY-MM-DD format).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.establishment_date'?: string;
     /**
      * Name of the specific office or branch.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.office_name'?: string;
     /**
      * Primary contact email address for the company.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.contact_email'?: string;
     /**
      * Primary contact phone number for the company.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.contact_phone'?: string;
     /**
      * File IDs of uploaded incorporation certificate documents.
-     * @type {Array<string>}
-     * @memberof LiveApplicationRequest
      */
     'company_information.incorporation_certificates'?: Array<string>;
     /**
      * Company registration number.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.registration_number'?: string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof LiveApplicationRequest
      */
     'company_information.share_capital_amount'?: number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'company_information.share_capital_currency'?: Currency;
     /**
      * File IDs of uploaded sole proprietorship proof documents.
-     * @type {Array<string>}
-     * @memberof LiveApplicationRequest
      */
     'company_information.sole_proprietor_proofs'?: Array<string>;
     /**
      * Company name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_name_kana'?: string;
     /**
      * Company name in alphanumeric (Roman) characters.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_name_alphabet'?: string;
     /**
      * URL of the company\'s website.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_url'?: string;
     /**
      * Street address in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_address_kana'?: string;
     /**
      * Building name portion of the company address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_address_building_name'?: string;
     /**
      * Building name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'company_information.company_address_building_name_kana'?: string;
     /**
      * Representative director\'s first name.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.first_name'?: string;
     /**
      * Representative director\'s first name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.first_name_kana'?: string;
     /**
      * Representative director\'s last name.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.last_name'?: string;
     /**
      * Representative director\'s last name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.last_name_kana'?: string;
     /**
      * Representative director\'s date of birth (YYYY-MM-DD format).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.date_of_birth'?: string;
     /**
      * Representative director\'s gender.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.gender'?: LiveApplicationRequestRepresentativeDirectorInformationGenderEnum;
-    /**
-     * 
-     * @type {CountryCode}
-     * @memberof LiveApplicationRequest
-     */
     'representative_director_information.country'?: CountryCode;
     /**
      * Postal code of the representative director\'s address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.postal_code'?: string;
     /**
      * Prefecture or state of the representative director\'s address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.prefecture_state'?: string;
     /**
      * Prefecture or state in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.prefecture_state_kana'?: string;
     /**
      * City of the representative director\'s address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.city'?: string;
     /**
      * City name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.city_kana'?: string;
     /**
      * Street address of the representative director.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.address'?: string;
     /**
      * Street address in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.address_kana'?: string;
     /**
      * Building name portion of the representative director\'s address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.address_building_name'?: string;
     /**
      * Building name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.address_building_name_kana'?: string;
     /**
      * Representative director\'s phone number.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'representative_director_information.phone'?: string;
     /**
      * Applicant\'s first name.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.first_name'?: string;
     /**
      * Applicant\'s first name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.first_name_kana'?: string;
     /**
      * Applicant\'s last name.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.last_name'?: string;
     /**
      * Applicant\'s last name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.last_name_kana'?: string;
-    /**
-     * 
-     * @type {CountryCode}
-     * @memberof LiveApplicationRequest
-     */
     'applicant_information.country'?: CountryCode;
     /**
      * Applicant\'s gender.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.gender'?: LiveApplicationRequestApplicantInformationGenderEnum;
     /**
      * Applicant\'s date of birth (YYYY-MM-DD format).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.date_of_birth'?: string;
     /**
      * Type of identity document submitted for verification.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.identity_document_type'?: LiveApplicationRequestApplicantInformationIdentityDocumentTypeEnum;
     /**
      * File ID of the front side of the uploaded identity document.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.identity_front'?: string;
     /**
      * File ID of the back side of the uploaded identity document.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'applicant_information.identity_back'?: string;
     /**
      * Name of the merchant\'s website or online store.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_name'?: string;
     /**
      * Site name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_name_kana'?: string;
     /**
      * Site name in alphanumeric (Roman) characters.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_name_alphabet'?: string;
     /**
      * URL of the merchant\'s online store.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_url'?: string;
     /**
      * Date the online store was established (YYYY-MM-DD format).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.establishment_date'?: string;
-    /**
-     * 
-     * @type {CountryCode}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.store_country'?: CountryCode;
     /**
      * Postal code of the store\'s physical location.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_postal_code'?: string;
     /**
      * Prefecture or state of the store\'s physical location.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_prefecture_state'?: string;
     /**
      * Prefecture or state in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_prefecture_state_kana'?: string;
     /**
      * City of the store\'s physical location.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_city'?: string;
     /**
      * City name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_city_kana'?: string;
     /**
      * Street address of the store\'s physical location.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_address'?: string;
     /**
      * Store street address in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_address_kana'?: string;
     /**
      * Building name for the store\'s address.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_building_name'?: string;
     /**
      * Building name in katakana.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.store_building_name_kana'?: string;
     /**
      * Description of the products or services sold on the site.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_product_description'?: string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_annual_sales'?: number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.site_annual_sales_currency'?: Currency;
     /**
      * Average transaction value as a formatted string.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_average_transactional_value'?: string;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.site_average_transactional_currency'?: Currency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_minimum_product_pricing_cents'?: number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.site_minimum_product_pricing_currency'?: Currency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof LiveApplicationRequest
      */
     'site_information.site_maximum_product_pricing_cents'?: number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.site_maximum_product_pricing_currency'?: Currency;
     /**
      * URL of the merchant\'s Specified Commercial Transaction Law disclosure page.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'site_information.sctl_url'?: string;
     /**
      * Whether a sales permit is required for the merchant\'s business type.
-     * @type {boolean}
-     * @memberof LiveApplicationRequest
      */
     'site_information.sales_permit_required'?: boolean;
     /**
      * Whether the merchant has accepted the Acceptable Use Policy.
-     * @type {boolean}
-     * @memberof LiveApplicationRequest
      */
     'site_information.aup_accepted'?: boolean;
-    /**
-     * 
-     * @type {IndustryType}
-     * @memberof LiveApplicationRequest
-     */
     'site_information.industry_type'?: IndustryType;
     /**
      * File IDs of uploaded sales permit documents.
-     * @type {Array<string>}
-     * @memberof LiveApplicationRequest
      */
     'site_information.sales_permits'?: Array<string>;
     /**
      * Name of the merchant\'s bank (Zengin network).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_bank_name'?: string;
     /**
      * 4-digit bank code in the Zengin network.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_bank_code'?: string;
     /**
      * Name of the bank branch.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_branch_name'?: string;
     /**
      * 3-digit branch code.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_branch_code'?: string;
     /**
      * Type of bank account (ordinary or checking).
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_account_type'?: LiveApplicationRequestBankAccountInformationZenginAccountTypeEnum;
     /**
      * Bank account number.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_account_number'?: string;
     /**
      * Account holder name in katakana as registered with the bank.
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.zengin_account_holder_kana'?: string;
     /**
      * Type of bank transfer supported (currently only \"domestic\").
-     * @type {string}
-     * @memberof LiveApplicationRequest
      */
     'bank_account_information.transfer_type'?: LiveApplicationRequestBankAccountInformationTransferTypeEnum;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof LiveApplicationRequest
-     */
     'bank_account_information.currency'?: Currency;
-    /**
-     * 
-     * @type {SettlementFrequency}
-     * @memberof LiveApplicationRequest
-     */
     'bank_account_information.default_frequency'?: SettlementFrequency;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestCompanyInformationCorporationTypeEnum {
     SoleProprietor = 'sole_proprietor',
     Corporation = 'corporation'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestRepresentativeDirectorInformationGenderEnum {
     Male = 'male',
     Female = 'female'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestApplicantInformationGenderEnum {
     Male = 'male',
     Female = 'female'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestApplicantInformationIdentityDocumentTypeEnum {
     Passport = 'passport',
     DriversLicense = 'drivers_license',
     IdCard = 'id_card',
     MyNumberCard = 'my_number_card'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestBankAccountInformationZenginAccountTypeEnum {
     Ordinary = 'ordinary',
     Checking = 'checking'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum LiveApplicationRequestBankAccountInformationTransferTypeEnum {
     Domestic = 'domestic'
 }

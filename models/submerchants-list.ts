@@ -17,46 +17,29 @@
 // @ts-ignore
 import type { SubmerchantListItem } from './submerchant-list-item';
 
-/**
- * 
- * @export
- * @interface SubmerchantsList
- */
 export interface SubmerchantsList {
     /**
      * Resource type name for this list.
-     * @type {string}
-     * @memberof SubmerchantsList
      */
     'resource': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SubmerchantsList
      */
     'total': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SubmerchantsList
      */
     'page': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SubmerchantsList
      */
     'per_page': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SubmerchantsList
      */
     'last_page': number;
     /**
      * Array of sub-merchant list items for this page.
-     * @type {Array<SubmerchantListItem>}
-     * @memberof SubmerchantsList
      */
     'data': Array<SubmerchantListItem>;
 }

@@ -23,112 +23,64 @@ import type { SerializedSubmerchantActivePaymentMethodsInner } from './serialize
 // @ts-ignore
 import type { SerializedSubmerchantExpirySettingsInner } from './serialized-submerchant-expiry-settings-inner';
 
-/**
- * 
- * @export
- * @interface SerializedSubmerchant
- */
 export interface SerializedSubmerchant {
     /**
      * Unique identifier for this sub-merchant.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'id': string;
     /**
      * Whether this merchant is operating in live (production) mode.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
      */
     'live': boolean;
     /**
      * Timestamp when this merchant was created.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'created_at': string;
     /**
      * Timestamp when this merchant record was last updated.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'updated_at': string;
     /**
      * Account identifier associated with this merchant.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'account_id': string;
     /**
      * Display name of the sub-merchant.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'name': string;
-    /**
-     * 
-     * @type {MerchantRole}
-     * @memberof SerializedSubmerchant
-     */
     'platform_role': MerchantRole;
     /**
      * Current account/application status of the merchant.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'status': string;
     /**
      * Whether payments are currently enabled for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
      */
     'payments_enabled': boolean;
     /**
      * Whether payouts are currently enabled for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
      */
     'payouts_enabled': boolean;
     /**
-     * Whether payment instruction emails are sent to customers for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
+     * Whether payment instruction emails are sent to customers for this merchant. Omitted for `payout`-role merchants.
      */
-    'send_payment_instruction_email': boolean;
+    'send_payment_instruction_email'?: boolean;
     /**
-     * Whether payment receipt emails are sent to customers for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
+     * Whether payment receipt emails are sent to customers for this merchant. Omitted for `payout`-role merchants.
      */
-    'send_payment_receipt_email': boolean;
+    'send_payment_receipt_email'?: boolean;
     /**
-     * Whether payment reminder emails are sent to customers for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
+     * Whether payment reminder emails are sent to customers for this merchant. Omitted for `payout`-role merchants.
      */
-    'send_payment_reminder_email': boolean;
+    'send_payment_reminder_email'?: boolean;
     /**
-     * Whether refund notification emails are sent to customers for this merchant.
-     * @type {boolean}
-     * @memberof SerializedSubmerchant
+     * Whether refund notification emails are sent to customers for this merchant. Omitted for `payout`-role merchants.
      */
-    'send_payment_refund_email': boolean;
-    /**
-     * 
-     * @type {Array<SerializedSubmerchantExpirySettingsInner>}
-     * @memberof SerializedSubmerchant
-     */
+    'send_payment_refund_email'?: boolean;
     'expiry_settings': Array<SerializedSubmerchantExpirySettingsInner>;
-    /**
-     * 
-     * @type {Array<SerializedSubmerchantActivePaymentMethodsInner>}
-     * @memberof SerializedSubmerchant
-     */
     'active_payment_methods': Array<SerializedSubmerchantActivePaymentMethodsInner>;
     /**
      * The merchant\'s publishable API key for client-side use.
-     * @type {string}
-     * @memberof SerializedSubmerchant
      */
     'publishable_key': string;
 }

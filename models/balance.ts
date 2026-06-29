@@ -17,22 +17,10 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface Balance
- */
 export interface Balance {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof Balance
-     */
     'currency': Currency;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Balance
      */
     'total_balance_cents': number;
 }
