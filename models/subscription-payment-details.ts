@@ -14,34 +14,21 @@
 
 
 
-/**
- * 
- * @export
- * @interface SubscriptionPaymentDetails
- */
 export interface SubscriptionPaymentDetails {
     /**
      * Payment method type for this subscription.
-     * @type {string}
-     * @memberof SubscriptionPaymentDetails
      */
     'type': string;
     /**
      * Card expiry month.
-     * @type {string}
-     * @memberof SubscriptionPaymentDetails
      */
     'month': string;
     /**
      * Card expiry year.
-     * @type {string}
-     * @memberof SubscriptionPaymentDetails
      */
     'year': string;
     /**
      * Customer\'s email address.
-     * @type {string}
-     * @memberof SubscriptionPaymentDetails
      */
     'email': string;
 }

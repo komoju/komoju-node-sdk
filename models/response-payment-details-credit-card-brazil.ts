@@ -16,34 +16,22 @@
 
 /**
  * 
- * @export
- * @interface ResponsePaymentDetailsCreditCardBrazil
  */
 export interface ResponsePaymentDetailsCreditCardBrazil {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardBrazil
      */
     'type': ResponsePaymentDetailsCreditCardBrazilTypeEnum;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardBrazil
      */
     'email': string;
     /**
      * Remote payment identifier returned by the Brazilian payment gateway.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCardBrazil
      */
     'remote_payment_id': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardBrazilTypeEnum {
     CreditCardBrazil = 'credit_card_brazil'
 }

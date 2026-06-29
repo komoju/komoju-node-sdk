@@ -20,40 +20,19 @@ import type { Currency } from './currency';
 // @ts-ignore
 import type { SubscriptionPeriod } from './subscription-period';
 
-/**
- * 
- * @export
- * @interface CreateSubscriptionRequest
- */
 export interface CreateSubscriptionRequest {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof CreateSubscriptionRequest
      */
     'customer': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreateSubscriptionRequest
      */
     'amount': number;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateSubscriptionRequest
-     */
     'currency': Currency;
-    /**
-     * 
-     * @type {SubscriptionPeriod}
-     * @memberof CreateSubscriptionRequest
-     */
     'period': SubscriptionPeriod;
     /**
      * Store any additional data you want to associate with the subscription. The object\'s keys and values must be strings. Keys have a maximum length of 30 characters. Values have a maximum length of 2000 characters.
-     * @type {object}
-     * @memberof CreateSubscriptionRequest
      */
     'metadata'?: object;
 }

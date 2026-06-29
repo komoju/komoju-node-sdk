@@ -14,52 +14,33 @@
 
 
 
-/**
- * 
- * @export
- * @interface Address
- */
 export interface Address {
     /**
      * Address name.
-     * @type {string}
-     * @memberof Address
      */
     'name'?: string;
     /**
      * Address line 1.
-     * @type {string}
-     * @memberof Address
      */
     'street_address1'?: string;
     /**
      * Address line 2.
-     * @type {string}
-     * @memberof Address
      */
     'street_address2'?: string;
     /**
      * Address city.
-     * @type {string}
-     * @memberof Address
      */
     'city'?: string;
     /**
      * Address state.
-     * @type {string}
-     * @memberof Address
      */
     'state'?: string;
     /**
      * Address ZIP code.
-     * @type {string}
-     * @memberof Address
      */
     'zipcode'?: string;
     /**
      * Address country.
-     * @type {string}
-     * @memberof Address
      */
     'country'?: string;
 }

@@ -23,52 +23,30 @@ import type { Field } from './field';
 // @ts-ignore
 import type { LiveApplicationStatus } from './live-application-status';
 
-/**
- * 
- * @export
- * @interface LiveApplication
- */
 export interface LiveApplication {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof LiveApplication
      */
     'merchant_id': string;
-    /**
-     * 
-     * @type {LiveApplicationStatus}
-     * @memberof LiveApplication
-     */
     'status': LiveApplicationStatus;
     /**
      * Whether payments have been enabled following application review.
-     * @type {boolean}
-     * @memberof LiveApplication
      */
     'payments_enabled': boolean;
     /**
      * Whether payouts have been enabled following application review.
-     * @type {boolean}
-     * @memberof LiveApplication
      */
     'payouts_enabled': boolean;
     /**
      * Fields currently required to be submitted for this application.
-     * @type {Array<Field>}
-     * @memberof LiveApplication
      */
     'requested_fields': Array<Field>;
     /**
      * Fields newly added to the required list since last submission.
-     * @type {Array<Field>}
-     * @memberof LiveApplication
      */
     'newly_requested_fields': Array<Field>;
     /**
      * Fields that were submitted but failed validation.
-     * @type {Array<ErroredField>}
-     * @memberof LiveApplication
      */
     'errored_fields': Array<ErroredField>;
 }

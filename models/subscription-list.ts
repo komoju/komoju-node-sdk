@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Subscription } from './subscription';
 
-/**
- * 
- * @export
- * @interface SubscriptionList
- */
 export interface SubscriptionList {
     /**
      * Resource type name, always \"subscription_list\".
-     * @type {string}
-     * @memberof SubscriptionList
      */
     'resource': string;
     /**
      * Array of subscription objects for this page.
-     * @type {Array<Subscription>}
-     * @memberof SubscriptionList
      */
     'data': Array<Subscription>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof SubscriptionList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof SubscriptionList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof SubscriptionList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof SubscriptionList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof SubscriptionList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof SubscriptionList
      */
     'last_page': number;
 }

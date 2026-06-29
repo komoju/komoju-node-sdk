@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -37,7 +37,6 @@ import type { SubscriptionList } from '../models';
 import type { UpdateCustomerRequest } from '../models';
 /**
  * SubscriptionsApi - axios parameter creator
- * @export
  */
 export const SubscriptionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -67,9 +66,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -107,9 +105,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -132,7 +129,7 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteCustomer', 'id', id)
             const localVarPath = `/customers/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -148,8 +145,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -170,7 +167,7 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteSubscription', 'id', id)
             const localVarPath = `/subscriptions/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -186,8 +183,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -249,8 +246,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['expiration'] = expiration;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -307,8 +304,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['page'] = page;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -329,7 +326,7 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showCustomer', 'id', id)
             const localVarPath = `/customers/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -345,8 +342,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -367,7 +364,7 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSubscription', 'id', id)
             const localVarPath = `/subscriptions/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -383,8 +380,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -408,7 +405,7 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'updateCustomerRequest' is not null or undefined
             assertParamExists('updateCustomer', 'updateCustomerRequest', updateCustomerRequest)
             const localVarPath = `/customers/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -424,9 +421,8 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -443,7 +439,6 @@ export const SubscriptionsApiAxiosParamCreator = function (configuration?: Confi
 
 /**
  * SubscriptionsApi - functional programming interface
- * @export
  */
 export const SubscriptionsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SubscriptionsApiAxiosParamCreator(configuration)
@@ -578,7 +573,6 @@ export const SubscriptionsApiFp = function(configuration?: Configuration) {
 
 /**
  * SubscriptionsApi - factory interface
- * @export
  */
 export const SubscriptionsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = SubscriptionsApiFp(configuration)
@@ -678,191 +672,112 @@ export const SubscriptionsApiFactory = function (configuration?: Configuration, 
 
 /**
  * Request parameters for createCustomer operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiCreateCustomerRequest
  */
 export interface SubscriptionsApiCreateCustomerRequest {
-    /**
-     * 
-     * @type {CreateCustomerRequest}
-     * @memberof SubscriptionsApiCreateCustomer
-     */
     readonly createCustomerRequest: CreateCustomerRequest
 }
 
 /**
  * Request parameters for createSubscription operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiCreateSubscriptionRequest
  */
 export interface SubscriptionsApiCreateSubscriptionRequest {
-    /**
-     * 
-     * @type {CreateSubscriptionRequest}
-     * @memberof SubscriptionsApiCreateSubscription
-     */
     readonly createSubscriptionRequest: CreateSubscriptionRequest
 }
 
 /**
  * Request parameters for deleteCustomer operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiDeleteCustomerRequest
  */
 export interface SubscriptionsApiDeleteCustomerRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionsApiDeleteCustomer
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for deleteSubscription operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiDeleteSubscriptionRequest
  */
 export interface SubscriptionsApiDeleteSubscriptionRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionsApiDeleteSubscription
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for listCustomers operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiListCustomersRequest
  */
 export interface SubscriptionsApiListCustomersRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof SubscriptionsApiListCustomers
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof SubscriptionsApiListCustomers
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof SubscriptionsApiListCustomers
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof SubscriptionsApiListCustomers
      */
     readonly page?: number
 
     /**
      * The expiration of the customer\&#39;s credit card in MMYY format.
-     * @type {string}
-     * @memberof SubscriptionsApiListCustomers
      */
     readonly expiration?: string
 }
 
 /**
  * Request parameters for listSubscriptions operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiListSubscriptionsRequest
  */
 export interface SubscriptionsApiListSubscriptionsRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof SubscriptionsApiListSubscriptions
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof SubscriptionsApiListSubscriptions
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof SubscriptionsApiListSubscriptions
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof SubscriptionsApiListSubscriptions
      */
     readonly page?: number
 }
 
 /**
  * Request parameters for showCustomer operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiShowCustomerRequest
  */
 export interface SubscriptionsApiShowCustomerRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionsApiShowCustomer
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showSubscription operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiShowSubscriptionRequest
  */
 export interface SubscriptionsApiShowSubscriptionRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionsApiShowSubscription
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for updateCustomer operation in SubscriptionsApi.
- * @export
- * @interface SubscriptionsApiUpdateCustomerRequest
  */
 export interface SubscriptionsApiUpdateCustomerRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionsApiUpdateCustomer
-     */
     readonly id: string
 
-    /**
-     * 
-     * @type {UpdateCustomerRequest}
-     * @memberof SubscriptionsApiUpdateCustomer
-     */
     readonly updateCustomerRequest: UpdateCustomerRequest
 }
 
 /**
  * SubscriptionsApi - object-oriented interface
- * @export
- * @class SubscriptionsApi
- * @extends {BaseAPI}
  */
 export class SubscriptionsApi extends BaseAPI {
     /**
@@ -871,7 +786,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiCreateCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public createCustomer(requestParameters: SubscriptionsApiCreateCustomerRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).createCustomer(requestParameters.createCustomerRequest, options).then((request) => request(this.axios, this.basePath));
@@ -883,7 +797,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiCreateSubscriptionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public createSubscription(requestParameters: SubscriptionsApiCreateSubscriptionRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).createSubscription(requestParameters.createSubscriptionRequest, options).then((request) => request(this.axios, this.basePath));
@@ -895,7 +808,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiDeleteCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public deleteCustomer(requestParameters: SubscriptionsApiDeleteCustomerRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).deleteCustomer(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -907,7 +819,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiDeleteSubscriptionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public deleteSubscription(requestParameters: SubscriptionsApiDeleteSubscriptionRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).deleteSubscription(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -919,7 +830,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiListCustomersRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public listCustomers(requestParameters: SubscriptionsApiListCustomersRequest = {}, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).listCustomers(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.expiration, options).then((request) => request(this.axios, this.basePath));
@@ -931,7 +841,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiListSubscriptionsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public listSubscriptions(requestParameters: SubscriptionsApiListSubscriptionsRequest = {}, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).listSubscriptions(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
@@ -943,7 +852,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiShowCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public showCustomer(requestParameters: SubscriptionsApiShowCustomerRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).showCustomer(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -955,7 +863,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiShowSubscriptionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public showSubscription(requestParameters: SubscriptionsApiShowSubscriptionRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).showSubscription(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -967,7 +874,6 @@ export class SubscriptionsApi extends BaseAPI {
      * @param {SubscriptionsApiUpdateCustomerRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SubscriptionsApi
      */
     public updateCustomer(requestParameters: SubscriptionsApiUpdateCustomerRequest, options?: RawAxiosRequestConfig) {
         return SubscriptionsApiFp(this.configuration).updateCustomer(requestParameters.id, requestParameters.updateCustomerRequest, options).then((request) => request(this.axios, this.basePath));

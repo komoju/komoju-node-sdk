@@ -14,24 +14,10 @@
 
 
 
-/**
- * 
- * @export
- * @interface SimulateLiveApplicationPaymentMethodStatusRequest
- */
 export interface SimulateLiveApplicationPaymentMethodStatusRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SimulateLiveApplicationPaymentMethodStatusRequest
-     */
     'status'?: SimulateLiveApplicationPaymentMethodStatusRequestStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum SimulateLiveApplicationPaymentMethodStatusRequestStatusEnum {
     Accepted = 'accepted',
     Declined = 'declined'

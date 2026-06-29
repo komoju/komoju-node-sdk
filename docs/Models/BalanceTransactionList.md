@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **resource** | **String** | Resource type name for this list, always \&quot;balance_transaction_list\&quot;. | [default to null] |
+| **resource** | **String** | Resource type name for this list, always \&quot;list\&quot;. | [default to null] |
 | **data** | [**List**](Transaction.md) | Array of ledger transaction objects. | [default to null] |
 | **start\_time** | **Date** | Start of the time range for records in this response. | [default to null] |
 | **end\_time** | **Date** | End of the time range for records in this response. | [default to null] |

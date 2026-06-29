@@ -14,16 +14,9 @@
 
 
 
-/**
- * 
- * @export
- * @interface MerchantData
- */
 export interface MerchantData {
     /**
      * Display name of the merchant associated with this session.
-     * @type {string}
-     * @memberof MerchantData
      */
     'name': string;
 }

@@ -16,8 +16,6 @@
 
 /**
  * Interval for subscription payments
- * @export
- * @enum {string}
  */
 
 export enum SubscriptionPeriod {

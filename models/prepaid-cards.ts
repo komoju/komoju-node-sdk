@@ -14,22 +14,13 @@
 
 
 
-/**
- * 
- * @export
- * @interface PrepaidCards
- */
 export interface PrepaidCards {
     /**
      * Last four digits of the prepaid card number.
-     * @type {string}
-     * @memberof PrepaidCards
      */
     'last_four_digits'?: string;
     /**
      * Points or remaining balance on this prepaid card.
-     * @type {number}
-     * @memberof PrepaidCards
      */
     'points'?: number;
 }

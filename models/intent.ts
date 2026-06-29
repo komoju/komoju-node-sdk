@@ -16,8 +16,6 @@
 
 /**
  * Specify the intent of the payment.  Specifying this attribute can increase authorization credit card payments authorization rates, especially when using a stored card.
- * @export
- * @enum {string}
  */
 
 export enum Intent {

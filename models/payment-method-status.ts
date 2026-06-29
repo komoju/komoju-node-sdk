@@ -15,24 +15,12 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { PaymentStatus } from './payment-status';
+import type { PaymentMethodApplicationStatus } from './payment-method-application-status';
 
-/**
- * 
- * @export
- * @interface PaymentMethodStatus
- */
 export interface PaymentMethodStatus {
-    /**
-     * 
-     * @type {PaymentStatus}
-     * @memberof PaymentMethodStatus
-     */
-    'status': PaymentStatus;
+    'status': PaymentMethodApplicationStatus;
     /**
      * The type slug of the payment method this status applies to.
-     * @type {string}
-     * @memberof PaymentMethodStatus
      */
     'payment_method': string;
 }

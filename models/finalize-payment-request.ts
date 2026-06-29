@@ -14,48 +14,23 @@
 
 
 
-/**
- * 
- * @export
- * @interface FinalizePaymentRequest
- */
 export interface FinalizePaymentRequest {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof FinalizePaymentRequest
-     */
     'capture'?: boolean;
     /**
      * EMV chip card action code: TC (approved), AAC (declined), or fault.
-     * @type {string}
-     * @memberof FinalizePaymentRequest
      */
     'ac_type': FinalizePaymentRequestAcTypeEnum;
     /**
      * EMV tag 55 data from the chip card transaction.
-     * @type {string}
-     * @memberof FinalizePaymentRequest
      */
     'field55': string;
     /**
      * Track 2 magnetic stripe equivalent data from the chip card.
-     * @type {string}
-     * @memberof FinalizePaymentRequest
      */
     'track2': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof FinalizePaymentRequest
-     */
     'metadata'?: object;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum FinalizePaymentRequestAcTypeEnum {
     Tc = 'tc',
     Aac = 'aac',

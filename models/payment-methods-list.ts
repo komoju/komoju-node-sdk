@@ -17,22 +17,13 @@
 // @ts-ignore
 import type { PaymentMethodStatus } from './payment-method-status';
 
-/**
- * 
- * @export
- * @interface PaymentMethodsList
- */
 export interface PaymentMethodsList {
     /**
      * Array of payment methods that have been submitted for review, with their statuses.
-     * @type {Array<PaymentMethodStatus>}
-     * @memberof PaymentMethodsList
      */
     'submitted_payment_methods': Array<PaymentMethodStatus>;
     /**
      * Array of payment method type slugs that have not yet been submitted for review.
-     * @type {Array<string>}
-     * @memberof PaymentMethodsList
      */
     'unsubmitted_payment_methods': Array<string>;
 }

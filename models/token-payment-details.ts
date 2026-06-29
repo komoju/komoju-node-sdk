@@ -14,58 +14,37 @@
 
 
 
-/**
- * 
- * @export
- * @interface TokenPaymentDetails
- */
 export interface TokenPaymentDetails {
     /**
      * Payment method type for this token (e.g. \"credit_card\").
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'type': string;
     /**
      * Email address associated with this token.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'email'?: string;
     /**
      * Phone number associated with this token.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'phone'?: string;
     /**
      * Customer\'s given name.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'given_name'?: string;
     /**
      * Customer\'s family name.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'family_name'?: string;
     /**
      * Customer\'s given name in katakana.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'given_name_kana'?: string;
     /**
      * Customer\'s family name in katakana.
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'family_name_kana'?: string;
     /**
      * Convenience store slug selected for this token (e.g. \"seven-eleven\").
-     * @type {string}
-     * @memberof TokenPaymentDetails
      */
     'store'?: string;
 }

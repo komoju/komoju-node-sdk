@@ -14,22 +14,13 @@
 
 
 
-/**
- * 
- * @export
- * @interface MerchantSubmissionStatus
- */
 export interface MerchantSubmissionStatus {
     /**
      * Identifier of the merchant whose submission status is being reported.
-     * @type {string}
-     * @memberof MerchantSubmissionStatus
      */
     'merchant_id': string;
     /**
      * Current status of the merchant\'s live application submission.
-     * @type {string}
-     * @memberof MerchantSubmissionStatus
      */
     'status': string;
 }

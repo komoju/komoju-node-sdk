@@ -34,98 +34,48 @@ import type { StatementDescriptor } from './statement-descriptor';
 
 /**
  * 
- * @export
- * @interface CreatePaymentRequestWithCustomer
  */
 export interface CreatePaymentRequestWithCustomer {
     /**
      * The payment amount before tax, greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'amount': number;
     /**
      * If `false`, the payment will be authorized on success, and you must manually capture it later to secure funds.  The payment will be captured immediately if omitted.
-     * @type {boolean}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'capture'?: boolean;
     /**
      * A description from your application for this payment.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'description'?: string;
-    /**
-     * 
-     * @type {CreatePaymentRequestWithPaymentDetailsTax}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'tax'?: CreatePaymentRequestWithPaymentDetailsTax;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'currency': Currency;
     /**
      * A unique ID from your application used to track this payment.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'external_order_num'?: string;
     /**
      * For offsite payment methods, specify the URL where user will be redirected to after they have completed the payment.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'return_url'?: string;
     /**
      * For offsite payment methods, specify the URL where user will be redirected to if they cancel the payment.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'cancel_url'?: string;
-    /**
-     * 
-     * @type {Locale}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'locale'?: Locale;
     /**
      * Specify a key-value map which will be stored on the payment. You can use this field to store metadata related to this payment. Keys and values must be strings. Keys have a maximum length of 30 characters. Values have a maximum length of 2000 characters.
-     * @type {object}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'metadata'?: object;
     /**
      * On supported merchant and supported payment methods, specify a custom Merchant Category Code (MCC) for this payment.  See [Dynamic Statement Descriptors & MCCs](https://doc.komoju.com/docs/payments-with-dynamic-statement-descriptors) for more information.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'mcc'?: string;
-    /**
-     * 
-     * @type {StatementDescriptor}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'statement_descriptor'?: StatementDescriptor;
-    /**
-     * 
-     * @type {FraudDetails}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'fraud_details'?: FraudDetails;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof CreatePaymentRequestWithCustomer
-     */
     'platform_details'?: PlatformDetails;
     /**
      * For a subscription payment, specify customer\'s identifier for this payment.  This identifier can be obtained from [Customer: Create](https://doc.komoju.com/reference/createcustomer) endpoint.
-     * @type {string}
-     * @memberof CreatePaymentRequestWithCustomer
      */
     'customer': string;
 }

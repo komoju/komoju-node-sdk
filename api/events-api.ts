@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -29,7 +29,6 @@ import type { Event } from '../models';
 import type { EventList } from '../models';
 /**
  * EventsApi - axios parameter creator
- * @export
  */
 export const EventsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -80,8 +79,8 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
                 localVarQueryParameter['page'] = page;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -102,7 +101,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showEvent', 'id', id)
             const localVarPath = `/events/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -118,8 +117,8 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -134,7 +133,6 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
 
 /**
  * EventsApi - functional programming interface
- * @export
  */
 export const EventsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = EventsApiAxiosParamCreator(configuration)
@@ -173,7 +171,6 @@ export const EventsApiFp = function(configuration?: Configuration) {
 
 /**
  * EventsApi - factory interface
- * @export
  */
 export const EventsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = EventsApiFp(configuration)
@@ -203,58 +200,41 @@ export const EventsApiFactory = function (configuration?: Configuration, basePat
 
 /**
  * Request parameters for listEvents operation in EventsApi.
- * @export
- * @interface EventsApiListEventsRequest
  */
 export interface EventsApiListEventsRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof EventsApiListEvents
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof EventsApiListEvents
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof EventsApiListEvents
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof EventsApiListEvents
      */
     readonly page?: number
 }
 
 /**
  * Request parameters for showEvent operation in EventsApi.
- * @export
- * @interface EventsApiShowEventRequest
  */
 export interface EventsApiShowEventRequest {
     /**
      * A unique identifier for an event.
-     * @type {string}
-     * @memberof EventsApiShowEvent
      */
     readonly id: string
 }
 
 /**
  * EventsApi - object-oriented interface
- * @export
- * @class EventsApi
- * @extends {BaseAPI}
  */
 export class EventsApi extends BaseAPI {
     /**
@@ -263,7 +243,6 @@ export class EventsApi extends BaseAPI {
      * @param {EventsApiListEventsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof EventsApi
      */
     public listEvents(requestParameters: EventsApiListEventsRequest = {}, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).listEvents(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
@@ -275,7 +254,6 @@ export class EventsApi extends BaseAPI {
      * @param {EventsApiShowEventRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof EventsApi
      */
     public showEvent(requestParameters: EventsApiShowEventRequest, options?: RawAxiosRequestConfig) {
         return EventsApiFp(this.configuration).showEvent(requestParameters.id, options).then((request) => request(this.axios, this.basePath));

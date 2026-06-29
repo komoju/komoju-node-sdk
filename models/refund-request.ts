@@ -20,83 +20,48 @@ import type { PlatformDetails } from './platform-details';
 // @ts-ignore
 import type { RefundRequestStatus } from './refund-request-status';
 
-/**
- * 
- * @export
- * @interface RefundRequest
- */
 export interface RefundRequest {
     /**
      * A unique 25-character alphanumeric refund request identifier.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'id': string;
     /**
      * A unique 25-character alphanumeric payment identifier.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'payment': string;
     /**
      * Customer\'s name in half-width katakana characters.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'customer_name': string;
     /**
      * The name of the bank that customer would like money to be deposited to.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'bank_name': string;
     /**
      * 4-digit bank code. May be `null` if it\'s not given.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'bank_code': string;
     /**
      * The name of the branch.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'branch_name': string;
     /**
      * 3-digit branch number.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'branch_number': string;
     /**
      * 7-digit account number.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'account_number': string;
     /**
      * Optional description or reason for this refund request.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'description'?: string;
-    /**
-     * 
-     * @type {RefundRequestStatus}
-     * @memberof RefundRequest
-     */
     'status': RefundRequestStatus;
     /**
      * Timestamp when the refund request was created.
-     * @type {string}
-     * @memberof RefundRequest
      */
     'created_at': string;
-    /**
-     * 
-     * @type {PlatformDetails}
-     * @memberof RefundRequest
-     */
     'platform_details'?: PlatformDetails;
 }
 

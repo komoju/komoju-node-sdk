@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Transaction } from './transaction';
 
-/**
- * 
- * @export
- * @interface BalanceTransactionList
- */
 export interface BalanceTransactionList {
     /**
-     * Resource type name for this list, always \"balance_transaction_list\".
-     * @type {string}
-     * @memberof BalanceTransactionList
+     * Resource type name for this list, always \"list\".
      */
     'resource': string;
     /**
      * Array of ledger transaction objects.
-     * @type {Array<Transaction>}
-     * @memberof BalanceTransactionList
      */
     'data': Array<Transaction>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof BalanceTransactionList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof BalanceTransactionList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof BalanceTransactionList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof BalanceTransactionList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof BalanceTransactionList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof BalanceTransactionList
      */
     'last_page': number;
 }

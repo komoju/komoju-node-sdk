@@ -16,8 +16,6 @@
 
 /**
  * When this field is not an integer, only value `auto` is supported.
- * @export
- * @enum {string}
  */
 
 export enum Auto {

@@ -17,54 +17,30 @@
 // @ts-ignore
 import type { Payment } from './payment';
 
-/**
- * 
- * @export
- * @interface Event
- */
 export interface Event {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof Event
      */
     'id': string;
     /**
      * Event type slug (e.g. \"payment.captured\", \"payment.expired\").
-     * @type {string}
-     * @memberof Event
      */
     'type': string;
     /**
      * Resource type name, always \"event\".
-     * @type {string}
-     * @memberof Event
      */
     'resource': EventResourceEnum;
     /**
      * Timestamp when this event was created.
-     * @type {string}
-     * @memberof Event
      */
     'created_at': string;
     /**
      * Human-readable reason or description for this event, or null.
-     * @type {string}
-     * @memberof Event
      */
     'reason': string | null;
-    /**
-     * 
-     * @type {Payment}
-     * @memberof Event
-     */
     'data': Payment;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum EventResourceEnum {
     Event = 'event'
 }

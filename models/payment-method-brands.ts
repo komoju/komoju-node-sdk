@@ -17,7 +17,6 @@
 /**
  * @type PaymentMethodBrands
  * Only for credit card and Konbini
- * @export
  */
 export type PaymentMethodBrands = Array<object> | Array<string>;
 

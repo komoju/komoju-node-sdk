@@ -19,231 +19,128 @@ import type { Installments } from './installments';
 
 /**
  * 
- * @export
- * @interface ResponsePaymentDetailsCreditCard
  */
 export interface ResponsePaymentDetailsCreditCard {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'type': ResponsePaymentDetailsCreditCardTypeEnum;
     /**
      * Card brand (e.g. \"visa\", \"mastercard\", \"jcb\").
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'brand': string;
     /**
      * Last four digits of the card number.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'last_four_digits': string;
     /**
      * Credit card expiration month.
-     * @type {number}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'month': number;
     /**
      * Credit card expiration year.  If this value is less than 100, it will be treated as two digits year in the current century. E.g. If current year is `2024`, `99` means `2099`.
-     * @type {number}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'year': number;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'verification_value'?: ResponsePaymentDetailsCreditCardVerificationValueEnum;
     /**
      * Full name of the customer.  This attribute takes precedence over `given_name` and `family_name`.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'name'?: string;
     /**
      * Given name of the customer.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'given_name'?: string;
     /**
      * Family name of the customer.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'family_name'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'expiry_days'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'intent'?: ResponsePaymentDetailsCreditCardIntentEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'initiator'?: ResponsePaymentDetailsCreditCardInitiatorEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'usage'?: ResponsePaymentDetailsCreditCardUsageEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'scheme_reference'?: string;
-    /**
-     * 
-     * @type {Installments}
-     * @memberof ResponsePaymentDetailsCreditCard
-     */
     'installments'?: Installments;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsCreditCard
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardTypeEnum {
     CreditCard = 'credit_card'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardVerificationValueEnum {
     Approved = 'Approved',
     Invalid = 'Invalid',
     NotChecked = 'Not Checked',
     NotSupplied = 'Not Supplied'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardIntentEnum {
     OneTime = 'one_time',
     CardOnFile = 'card_on_file',
     Subscription = 'subscription',
     Installment = 'installment'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardInitiatorEnum {
     Merchant = 'merchant',
     Customer = 'customer'
 }
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsCreditCardUsageEnum {
     First = 'first',
     Used = 'used'

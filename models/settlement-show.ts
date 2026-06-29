@@ -49,7 +49,6 @@ import type { Status } from './status';
 
 /**
  * @type SettlementShow
- * @export
  */
 export type SettlementShow = Settlement & SharedDetails;
 

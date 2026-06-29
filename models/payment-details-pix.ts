@@ -16,130 +16,86 @@
 
 /**
  * 
- * @export
- * @interface PaymentDetailsPix
  */
 export interface PaymentDetailsPix {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'type': PaymentDetailsPixTypeEnum;
     /**
      * Full name of the customer.  This attribute takes precedence over `given_name` and `family_name`.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'name': string;
     /**
      * Customer\'s email address. Will be used for fraud prevention and payment receipt.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'email': string;
     /**
      * Customer\'s CPF number
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'cpf': string;
     /**
      * Specify customer\'s IPv4 or IPv6-formatted IP address of the customer.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'customer_ip': string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof PaymentDetailsPix
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDetailsPixTypeEnum {
     Pix = 'pix'
 }

@@ -14,28 +14,17 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsDisbursements
- */
 export interface SharedDetailsDisbursements {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsDisbursements
      */
     'disbursement_amount_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsDisbursements
      */
     'disbursement_fee_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsDisbursements
      */
     'total_cents': number;
 }

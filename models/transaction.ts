@@ -14,34 +14,21 @@
 
 
 
-/**
- * 
- * @export
- * @interface Transaction
- */
 export interface Transaction {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof Transaction
      */
     'id': string;
     /**
      * Type of ledger transaction (e.g. \"payment\", \"fee\", \"disbursement\").
-     * @type {string}
-     * @memberof Transaction
      */
     'type': string;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof Transaction
      */
     'amount_cents': number;
     /**
      * Timestamp when this ledger transaction occurred.
-     * @type {string}
-     * @memberof Transaction
      */
     'happened_at': string;
 }

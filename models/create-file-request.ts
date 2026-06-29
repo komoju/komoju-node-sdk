@@ -14,16 +14,9 @@
 
 
 
-/**
- * 
- * @export
- * @interface CreateFileRequest
- */
 export interface CreateFileRequest {
     /**
      * Must be only one file.
-     * @type {string}
-     * @memberof CreateFileRequest
      */
     'paper': string;
 }

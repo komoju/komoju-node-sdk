@@ -16,118 +16,78 @@
 
 /**
  * 
- * @export
- * @interface PaymentDetailsHappyMoney
  */
 export interface PaymentDetailsHappyMoney {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'type': PaymentDetailsHappyMoneyTypeEnum;
     /**
      * Happy Money ID.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'happy_money_id': string;
     /**
      * Happy Money password.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'happy_money_password': string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof PaymentDetailsHappyMoney
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum PaymentDetailsHappyMoneyTypeEnum {
     HappyMoney = 'happy_money'
 }

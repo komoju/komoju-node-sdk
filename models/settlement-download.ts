@@ -14,22 +14,13 @@
 
 
 
-/**
- * 
- * @export
- * @interface SettlementDownload
- */
 export interface SettlementDownload {
     /**
      * URL to download this settlement in CSV format, or null if unavailable.
-     * @type {string}
-     * @memberof SettlementDownload
      */
     'csv': string | null;
     /**
      * URL to download this settlement in XLS format, or null if unavailable.
-     * @type {string}
-     * @memberof SettlementDownload
      */
     'xls': string | null;
 }

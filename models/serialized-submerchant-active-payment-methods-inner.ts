@@ -17,46 +17,26 @@
 // @ts-ignore
 import type { Currency } from './currency';
 
-/**
- * 
- * @export
- * @interface SerializedSubmerchantActivePaymentMethodsInner
- */
 export interface SerializedSubmerchantActivePaymentMethodsInner {
     /**
      * Human-readable name of the payment method.
-     * @type {string}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
      */
     'name': string;
     /**
      * Machine-readable type slug for the payment method.
-     * @type {string}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
      */
     'type': string;
-    /**
-     * 
-     * @type {Currency}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
-     */
     'currency': Currency;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
      */
     'percentage': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
      */
     'fixed_amount_cents': number;
     /**
      * Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SerializedSubmerchantActivePaymentMethodsInner
      */
     'minimum_processing_fee_amount_cents': number;
 }

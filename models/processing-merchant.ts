@@ -14,16 +14,9 @@
 
 
 
-/**
- * 
- * @export
- * @interface ProcessingMerchant
- */
 export interface ProcessingMerchant {
     /**
      * A unique 25-character alphanumeric resource identifier.
-     * @type {string}
-     * @memberof ProcessingMerchant
      */
     'processing_merchant_id'?: string;
 }

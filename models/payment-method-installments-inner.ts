@@ -14,22 +14,13 @@
 
 
 
-/**
- * 
- * @export
- * @interface PaymentMethodInstallmentsInner
- */
 export interface PaymentMethodInstallmentsInner {
     /**
      * Amount due for this installment, in the lowest denomination of the currency.
-     * @type {number}
-     * @memberof PaymentMethodInstallmentsInner
      */
     'amount': number;
     /**
      * Date when this installment payment is due.
-     * @type {string}
-     * @memberof PaymentMethodInstallmentsInner
      */
     'pay_at': string;
 }

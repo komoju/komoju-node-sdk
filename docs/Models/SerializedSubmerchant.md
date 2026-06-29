@@ -14,10 +14,10 @@
 | **status** | **String** | Current account/application status of the merchant. | [default to null] |
 | **payments\_enabled** | **Boolean** | Whether payments are currently enabled for this merchant. | [default to null] |
 | **payouts\_enabled** | **Boolean** | Whether payouts are currently enabled for this merchant. | [default to null] |
-| **send\_payment\_instruction\_email** | **Boolean** | Whether payment instruction emails are sent to customers for this merchant. | [default to null] |
-| **send\_payment\_receipt\_email** | **Boolean** | Whether payment receipt emails are sent to customers for this merchant. | [default to null] |
-| **send\_payment\_reminder\_email** | **Boolean** | Whether payment reminder emails are sent to customers for this merchant. | [default to null] |
-| **send\_payment\_refund\_email** | **Boolean** | Whether refund notification emails are sent to customers for this merchant. | [default to null] |
+| **send\_payment\_instruction\_email** | **Boolean** | Whether payment instruction emails are sent to customers for this merchant. Omitted for &#x60;payout&#x60;-role merchants. | [optional] [default to null] |
+| **send\_payment\_receipt\_email** | **Boolean** | Whether payment receipt emails are sent to customers for this merchant. Omitted for &#x60;payout&#x60;-role merchants. | [optional] [default to null] |
+| **send\_payment\_reminder\_email** | **Boolean** | Whether payment reminder emails are sent to customers for this merchant. Omitted for &#x60;payout&#x60;-role merchants. | [optional] [default to null] |
+| **send\_payment\_refund\_email** | **Boolean** | Whether refund notification emails are sent to customers for this merchant. Omitted for &#x60;payout&#x60;-role merchants. | [optional] [default to null] |
 | **expiry\_settings** | [**List**](SerializedSubmerchant_expiry_settings_inner.md) |  | [default to null] |
 | **active\_payment\_methods** | [**List**](SerializedSubmerchant_active_payment_methods_inner.md) |  | [default to null] |
 | **publishable\_key** | **String** | The merchant&#39;s publishable API key for client-side use. | [default to null] |

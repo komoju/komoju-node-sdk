@@ -14,16 +14,9 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsCorrections
- */
 export interface SharedDetailsCorrections {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsCorrections
      */
     'total_cents': number;
 }

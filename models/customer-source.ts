@@ -16,38 +16,26 @@
 
 /**
  * Saved payment source for this customer, or null if none is saved.
- * @export
- * @interface CustomerSource
  */
 export interface CustomerSource {
     /**
      * Payment method type of the saved payment source.
-     * @type {string}
-     * @memberof CustomerSource
      */
     'type': string;
     /**
      * Card brand (e.g. \"visa\", \"mastercard\").
-     * @type {string}
-     * @memberof CustomerSource
      */
     'brand': string;
     /**
      * Last four digits of the saved card.
-     * @type {string}
-     * @memberof CustomerSource
      */
     'last_four_digits': string;
     /**
      * Card expiry month (two digits).
-     * @type {number}
-     * @memberof CustomerSource
      */
     'month': number;
     /**
      * Card expiry year (two or four digits).
-     * @type {number}
-     * @memberof CustomerSource
      */
     'year': number;
 }

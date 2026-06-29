@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Customer } from './customer';
 
-/**
- * 
- * @export
- * @interface CustomerList
- */
 export interface CustomerList {
     /**
      * Resource type name, always \"customer_list\".
-     * @type {string}
-     * @memberof CustomerList
      */
     'resource': string;
     /**
      * Array of customer objects for this page.
-     * @type {Array<Customer>}
-     * @memberof CustomerList
      */
     'data': Array<Customer>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof CustomerList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof CustomerList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof CustomerList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof CustomerList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof CustomerList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof CustomerList
      */
     'last_page': number;
 }

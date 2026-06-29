@@ -16,7 +16,6 @@
 
 /**
  * @type SubmittedFieldAllOfValue
- * @export
  */
 export type SubmittedFieldAllOfValue = boolean | number | string;
 

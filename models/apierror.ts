@@ -17,17 +17,7 @@
 // @ts-ignore
 import type { APIErrorBody } from './apierror-body';
 
-/**
- * 
- * @export
- * @interface APIError
- */
 export interface APIError {
-    /**
-     * 
-     * @type {APIErrorBody}
-     * @memberof APIError
-     */
     'error': APIErrorBody;
 }
 

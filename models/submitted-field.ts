@@ -25,7 +25,6 @@ import type { SubmittedFieldAllOfValue } from './submitted-field-all-of-value';
 
 /**
  * @type SubmittedField
- * @export
  */
 export type SubmittedField = Field;
 

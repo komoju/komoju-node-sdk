@@ -16,8 +16,6 @@
 
 /**
  * Specifies what to do with the payment details. Can create a payment, or a customer resource.
- * @export
- * @enum {string}
  */
 
 export enum SessionMode {

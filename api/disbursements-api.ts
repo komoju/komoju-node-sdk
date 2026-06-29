@@ -18,7 +18,7 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
@@ -37,7 +37,6 @@ import type { DisbursementList } from '../models';
 import type { DisbursementStatus } from '../models';
 /**
  * DisbursementsApi - axios parameter creator
- * @export
  */
 export const DisbursementsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -55,7 +54,7 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'cancelDisbursementRequest' is not null or undefined
             assertParamExists('cancelDisbursement', 'cancelDisbursementRequest', cancelDisbursementRequest)
             const localVarPath = `/disbursements/{id}/cancel`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -71,9 +70,8 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -111,9 +109,8 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
-
-    
             localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -180,8 +177,8 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['status'] = status;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -243,8 +240,8 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
                 localVarQueryParameter['currency'] = currency;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -265,7 +262,7 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showDisbursement', 'id', id)
             const localVarPath = `/disbursements/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -281,8 +278,8 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -297,7 +294,6 @@ export const DisbursementsApiAxiosParamCreator = function (configuration?: Confi
 
 /**
  * DisbursementsApi - functional programming interface
- * @export
  */
 export const DisbursementsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DisbursementsApiAxiosParamCreator(configuration)
@@ -380,7 +376,6 @@ export const DisbursementsApiFp = function(configuration?: Configuration) {
 
 /**
  * DisbursementsApi - factory interface
- * @export
  */
 export const DisbursementsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = DisbursementsApiFp(configuration)
@@ -440,135 +435,69 @@ export const DisbursementsApiFactory = function (configuration?: Configuration, 
 
 /**
  * Request parameters for cancelDisbursement operation in DisbursementsApi.
- * @export
- * @interface DisbursementsApiCancelDisbursementRequest
  */
 export interface DisbursementsApiCancelDisbursementRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof DisbursementsApiCancelDisbursement
-     */
     readonly id: string
 
-    /**
-     * 
-     * @type {CancelDisbursementRequest}
-     * @memberof DisbursementsApiCancelDisbursement
-     */
     readonly cancelDisbursementRequest: CancelDisbursementRequest
 }
 
 /**
  * Request parameters for createDisbursement operation in DisbursementsApi.
- * @export
- * @interface DisbursementsApiCreateDisbursementRequest
  */
 export interface DisbursementsApiCreateDisbursementRequest {
-    /**
-     * 
-     * @type {CreateDisbursementRequest}
-     * @memberof DisbursementsApiCreateDisbursement
-     */
     readonly createDisbursementRequest: CreateDisbursementRequest
 }
 
 /**
  * Request parameters for disbursementReport operation in DisbursementsApi.
- * @export
- * @interface DisbursementsApiDisbursementReportRequest
  */
 export interface DisbursementsApiDisbursementReportRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof DisbursementsApiDisbursementReport
-     */
     readonly startTime: string
 
-    /**
-     * 
-     * @type {string}
-     * @memberof DisbursementsApiDisbursementReport
-     */
     readonly endTime: string
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof DisbursementsApiDisbursementReport
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {DisbursementStatus}
-     * @memberof DisbursementsApiDisbursementReport
-     */
     readonly status: DisbursementStatus
 }
 
 /**
  * Request parameters for listDisbursements operation in DisbursementsApi.
- * @export
- * @interface DisbursementsApiListDisbursementsRequest
  */
 export interface DisbursementsApiListDisbursementsRequest {
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof DisbursementsApiListDisbursements
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof DisbursementsApiListDisbursements
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof DisbursementsApiListDisbursements
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof DisbursementsApiListDisbursements
      */
     readonly page?: number
 
-    /**
-     * 
-     * @type {Currency}
-     * @memberof DisbursementsApiListDisbursements
-     */
     readonly currency?: Currency
 }
 
 /**
  * Request parameters for showDisbursement operation in DisbursementsApi.
- * @export
- * @interface DisbursementsApiShowDisbursementRequest
  */
 export interface DisbursementsApiShowDisbursementRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof DisbursementsApiShowDisbursement
-     */
     readonly id: string
 }
 
 /**
  * DisbursementsApi - object-oriented interface
- * @export
- * @class DisbursementsApi
- * @extends {BaseAPI}
  */
 export class DisbursementsApi extends BaseAPI {
     /**
@@ -577,7 +506,6 @@ export class DisbursementsApi extends BaseAPI {
      * @param {DisbursementsApiCancelDisbursementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DisbursementsApi
      */
     public cancelDisbursement(requestParameters: DisbursementsApiCancelDisbursementRequest, options?: RawAxiosRequestConfig) {
         return DisbursementsApiFp(this.configuration).cancelDisbursement(requestParameters.id, requestParameters.cancelDisbursementRequest, options).then((request) => request(this.axios, this.basePath));
@@ -589,7 +517,6 @@ export class DisbursementsApi extends BaseAPI {
      * @param {DisbursementsApiCreateDisbursementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DisbursementsApi
      */
     public createDisbursement(requestParameters: DisbursementsApiCreateDisbursementRequest, options?: RawAxiosRequestConfig) {
         return DisbursementsApiFp(this.configuration).createDisbursement(requestParameters.createDisbursementRequest, options).then((request) => request(this.axios, this.basePath));
@@ -601,7 +528,6 @@ export class DisbursementsApi extends BaseAPI {
      * @param {DisbursementsApiDisbursementReportRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DisbursementsApi
      */
     public disbursementReport(requestParameters: DisbursementsApiDisbursementReportRequest, options?: RawAxiosRequestConfig) {
         return DisbursementsApiFp(this.configuration).disbursementReport(requestParameters.startTime, requestParameters.endTime, requestParameters.currency, requestParameters.status, options).then((request) => request(this.axios, this.basePath));
@@ -613,7 +539,6 @@ export class DisbursementsApi extends BaseAPI {
      * @param {DisbursementsApiListDisbursementsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DisbursementsApi
      */
     public listDisbursements(requestParameters: DisbursementsApiListDisbursementsRequest = {}, options?: RawAxiosRequestConfig) {
         return DisbursementsApiFp(this.configuration).listDisbursements(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.currency, options).then((request) => request(this.axios, this.basePath));
@@ -625,7 +550,6 @@ export class DisbursementsApi extends BaseAPI {
      * @param {DisbursementsApiShowDisbursementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DisbursementsApi
      */
     public showDisbursement(requestParameters: DisbursementsApiShowDisbursementRequest, options?: RawAxiosRequestConfig) {
         return DisbursementsApiFp(this.configuration).showDisbursement(requestParameters.id, options).then((request) => request(this.axios, this.basePath));

@@ -17,23 +17,11 @@
 // @ts-ignore
 import type { MerchantRole } from './merchant-role';
 
-/**
- * 
- * @export
- * @interface CreateMerchantRequest
- */
 export interface CreateMerchantRequest {
     /**
      * Sub-merchant name
-     * @type {string}
-     * @memberof CreateMerchantRequest
      */
     'name': string;
-    /**
-     * 
-     * @type {MerchantRole}
-     * @memberof CreateMerchantRequest
-     */
     'platform_role': MerchantRole;
 }
 

@@ -14,40 +14,25 @@
 
 
 
-/**
- * 
- * @export
- * @interface TerminalErrorBody
- */
 export interface TerminalErrorBody {
     /**
      * Machine-readable error code.
-     * @type {string}
-     * @memberof TerminalErrorBody
      */
     'code': string;
     /**
      * Human-readable error message.
-     * @type {string}
-     * @memberof TerminalErrorBody
      */
     'message': string;
     /**
      * The parameter that caused the error, if applicable.
-     * @type {string}
-     * @memberof TerminalErrorBody
      */
     'param': string;
     /**
      * Additional error details.
-     * @type {object}
-     * @memberof TerminalErrorBody
      */
     'details': object;
     /**
      * Detailed decline reason from the EMV terminal.
-     * @type {string}
-     * @memberof TerminalErrorBody
      */
     'decline_details': string;
 }

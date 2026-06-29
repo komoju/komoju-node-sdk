@@ -23,41 +23,17 @@ import type { SessionStatus } from './session-status';
 // @ts-ignore
 import type { SubscriptionCustomer } from './subscription-customer';
 
-/**
- * 
- * @export
- * @interface PaySessionResponse
- */
 export interface PaySessionResponse {
     /**
      * URL to redirect the customer to after submitting payment details, or null if no redirect is required.
-     * @type {string}
-     * @memberof PaySessionResponse
      */
     'redirect_url': string | null;
-    /**
-     * 
-     * @type {SessionStatus}
-     * @memberof PaySessionResponse
-     */
     'status': SessionStatus;
-    /**
-     * 
-     * @type {Payment}
-     * @memberof PaySessionResponse
-     */
     'payment'?: Payment;
     /**
      * URL for the payment app. Only present for offsite payments with a QR/app URL.
-     * @type {string}
-     * @memberof PaySessionResponse
      */
     'app_url'?: string;
-    /**
-     * 
-     * @type {SubscriptionCustomer}
-     * @memberof PaySessionResponse
-     */
     'customer'?: SubscriptionCustomer;
 }
 

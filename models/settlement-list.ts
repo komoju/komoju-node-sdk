@@ -17,58 +17,37 @@
 // @ts-ignore
 import type { Settlement } from './settlement';
 
-/**
- * 
- * @export
- * @interface SettlementList
- */
 export interface SettlementList {
     /**
-     * Resource type name, always \"settlement_list\".
-     * @type {string}
-     * @memberof SettlementList
+     * Resource type name for this list, always \"list\".
      */
     'resource': string;
     /**
      * Array of settlement objects for this page.
-     * @type {Array<Settlement>}
-     * @memberof SettlementList
      */
     'data': Array<Settlement>;
     /**
      * Start of the time range for records in this response.
-     * @type {string}
-     * @memberof SettlementList
      */
     'start_time': string;
     /**
      * End of the time range for records in this response.
-     * @type {string}
-     * @memberof SettlementList
      */
     'end_time': string;
     /**
      * Total number of records matching the query.
-     * @type {number}
-     * @memberof SettlementList
      */
     'total': number;
     /**
      * Current page number.
-     * @type {number}
-     * @memberof SettlementList
      */
     'page': number;
     /**
      * Number of results per page.
-     * @type {number}
-     * @memberof SettlementList
      */
     'per_page': number;
     /**
      * Last available page number.
-     * @type {number}
-     * @memberof SettlementList
      */
     'last_page': number;
 }

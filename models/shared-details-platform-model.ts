@@ -14,52 +14,33 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsPlatformModel
- */
 export interface SharedDetailsPlatformModel {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'fund_transfer_total_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'payment_share_total_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'payment_share_refund_total_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'platform_fee_total_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'platform_fee_refund_total_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'submerchant_management_fees_cents'?: number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPlatformModel
      */
     'total_cents'?: number;
 }

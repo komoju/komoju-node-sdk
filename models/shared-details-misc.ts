@@ -14,40 +14,25 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsMisc
- */
 export interface SharedDetailsMisc {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsMisc
      */
     'clearings_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsMisc
      */
     'komoju_card_discount_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsMisc
      */
     'chargeback_fixed_fee_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsMisc
      */
     'other_fee_adjustments_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsMisc
      */
     'total_cents': number;
 }

@@ -31,7 +31,6 @@ import type { SubmittedField } from './submitted-field';
 
 /**
  * @type LiveApplicationWithSubmittedFields
- * @export
  */
 export type LiveApplicationWithSubmittedFields = LiveApplication;
 

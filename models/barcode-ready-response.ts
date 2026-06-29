@@ -14,36 +14,21 @@
 
 
 
-/**
- * 
- * @export
- * @interface BarcodeReadyResponse
- */
 export interface BarcodeReadyResponse {
     /**
      * Barcode is available
-     * @type {string}
-     * @memberof BarcodeReadyResponse
      */
     'status': BarcodeReadyResponseStatusEnum;
     /**
      * Barcode cannot be used for payment after this time
-     * @type {string}
-     * @memberof BarcodeReadyResponse
      */
     'expires_at': string;
     /**
      * Base64 encoded PNG image (width: 750px, height: 150px). This value can be used as the `src` attribute of an HTML `<img>` tag.
-     * @type {string}
-     * @memberof BarcodeReadyResponse
      */
     'image': string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum BarcodeReadyResponseStatusEnum {
     Ready = 'ready'
 }

@@ -22,7 +22,6 @@ import type { BarcodeReadyResponse } from './barcode-ready-response';
 
 /**
  * @type ShowBarcodeResponse
- * @export
  */
 export type ShowBarcodeResponse = { status: 'pending' } & BarcodePendingResponse | { status: 'ready' } & BarcodeReadyResponse;
 

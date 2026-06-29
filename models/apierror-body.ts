@@ -14,34 +14,21 @@
 
 
 
-/**
- * 
- * @export
- * @interface APIErrorBody
- */
 export interface APIErrorBody {
     /**
      * Machine-readable error code.
-     * @type {string}
-     * @memberof APIErrorBody
      */
     'code': string;
     /**
      * Human-readable error message.
-     * @type {string}
-     * @memberof APIErrorBody
      */
     'message': string;
     /**
      * The parameter that caused the error, if applicable.
-     * @type {string}
-     * @memberof APIErrorBody
      */
     'param': string;
     /**
      * Additional error details.
-     * @type {object}
-     * @memberof APIErrorBody
      */
     'details': object;
 }

@@ -20,34 +20,15 @@ import type { Currency } from './currency';
 // @ts-ignore
 import type { PaymentDetailsOnlyCreditCards } from './payment-details-only-credit-cards';
 
-/**
- * 
- * @export
- * @interface CreateCustomerRequest
- */
 export interface CreateCustomerRequest {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof CreateCustomerRequest
-     */
     'currency'?: Currency;
-    /**
-     * 
-     * @type {PaymentDetailsOnlyCreditCards}
-     * @memberof CreateCustomerRequest
-     */
     'payment_details'?: PaymentDetailsOnlyCreditCards;
     /**
      * Customer\'s email address.
-     * @type {string}
-     * @memberof CreateCustomerRequest
      */
     'email'?: string;
     /**
      * Store any additional data you want to associate with the customer. The object\'s keys and values must be strings. Keys have a maximum length of 30 characters. Values have a maximum length of 2000 characters.
-     * @type {object}
-     * @memberof CreateCustomerRequest
      */
     'metadata'?: object;
 }

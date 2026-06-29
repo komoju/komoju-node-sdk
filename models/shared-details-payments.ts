@@ -14,28 +14,17 @@
 
 
 
-/**
- * 
- * @export
- * @interface SharedDetailsPayments
- */
 export interface SharedDetailsPayments {
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPayments
      */
     'captured_amount_total_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPayments
      */
     'processing_fees_cents': number;
     /**
      * Amount in the lowest denomination of the currency (e.g. cents for USD).
-     * @type {number}
-     * @memberof SharedDetailsPayments
      */
     'total_cents': number;
 }

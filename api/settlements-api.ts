@@ -18,11 +18,13 @@ import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction, replaceWithSerializableTypeIfNeeded } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
 import type { APIError } from '../models';
+// @ts-ignore
+import type { BalanceTransactionList } from '../models';
 // @ts-ignore
 import type { Currency } from '../models';
 // @ts-ignore
@@ -30,13 +32,81 @@ import type { SettlementList } from '../models';
 // @ts-ignore
 import type { SettlementShow } from '../models';
 // @ts-ignore
+import type { ShowBalance200Response } from '../models';
+// @ts-ignore
 import type { Transaction } from '../models';
 /**
  * SettlementsApi - axios parameter creator
- * @export
  */
 export const SettlementsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Given a currency, view the ledger transactions of the currently authenticated merchant. Will split ledger transactions into line items when appropriate.
+         * @summary Balance: Transactions
+         * @param {Currency} currency 
+         * @param {string} [startTime] Query for records created after this time.
+         * @param {string} [endTime] Query for records created before this time.
+         * @param {number} [perPage] How many objects per page.
+         * @param {number} [page] Page number to query for.
+         * @param {string} [type] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        balanceTransactions: async (currency: Currency, startTime?: string, endTime?: string, perPage?: number, page?: number, type?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'currency' is not null or undefined
+            assertParamExists('balanceTransactions', 'currency', currency)
+            const localVarPath = `/balances/{currency}/transactions`
+                .replace('{currency}', encodeURIComponent(String(currency)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            if (startTime !== undefined) {
+                localVarQueryParameter['start_time'] = (startTime as any instanceof Date) ?
+                    (startTime as any).toISOString() :
+                    startTime;
+            }
+
+            if (endTime !== undefined) {
+                localVarQueryParameter['end_time'] = (endTime as any instanceof Date) ?
+                    (endTime as any).toISOString() :
+                    endTime;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Retrieves a paginated list of settlements from most-recent to least-recent. Pagination can be configured with `page` and `per_page` parameters.
          * @summary Settlement: Index
@@ -84,8 +154,46 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
                 localVarQueryParameter['page'] = page;
             }
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Given a currency, view the unsettled balance of the currently authenticated merchant.
+         * @summary Balance: Show
+         * @param {Currency} currency 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        showBalance: async (currency: Currency, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'currency' is not null or undefined
+            assertParamExists('showBalance', 'currency', currency)
+            const localVarPath = `/balances/{currency}`
+                .replace('{currency}', encodeURIComponent(String(currency)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication api_key required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -106,7 +214,7 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSettlement', 'id', id)
             const localVarPath = `/settlements/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -122,8 +230,8 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -144,7 +252,7 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSettlementCSV', 'id', id)
             const localVarPath = `/settlements/{id}/csv`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -161,7 +269,6 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -182,7 +289,7 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSettlementPDF', 'id', id)
             const localVarPath = `/settlements/{id}/pdf`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -199,7 +306,6 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -220,7 +326,7 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'id' is not null or undefined
             assertParamExists('showSettlementXLS', 'id', id)
             const localVarPath = `/settlements/{id}/xls`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+                .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -237,7 +343,6 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -248,7 +353,7 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * Retrieves a single ledger transaction by its UUID for the given currency.
+         * Retrieves a single ledger transaction by its UUID for the given currency. Will return one entry per line item of the transaction.
          * @summary Balance: Transaction
          * @param {Currency} currency 
          * @param {string} transactionUuid 
@@ -261,8 +366,8 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // verify required parameter 'transactionUuid' is not null or undefined
             assertParamExists('showTransaction', 'transactionUuid', transactionUuid)
             const localVarPath = `/balances/{currency}/transactions/{transaction_uuid}`
-                .replace(`{${"currency"}}`, encodeURIComponent(String(currency)))
-                .replace(`{${"transaction_uuid"}}`, encodeURIComponent(String(transactionUuid)));
+                .replace('{currency}', encodeURIComponent(String(currency)))
+                .replace('{transaction_uuid}', encodeURIComponent(String(transactionUuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -278,8 +383,8 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
 
+            localVarHeaderParameter['Accept'] = 'application/json';
 
-    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -294,11 +399,28 @@ export const SettlementsApiAxiosParamCreator = function (configuration?: Configu
 
 /**
  * SettlementsApi - functional programming interface
- * @export
  */
 export const SettlementsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SettlementsApiAxiosParamCreator(configuration)
     return {
+        /**
+         * Given a currency, view the ledger transactions of the currently authenticated merchant. Will split ledger transactions into line items when appropriate.
+         * @summary Balance: Transactions
+         * @param {Currency} currency 
+         * @param {string} [startTime] Query for records created after this time.
+         * @param {string} [endTime] Query for records created before this time.
+         * @param {number} [perPage] How many objects per page.
+         * @param {number} [page] Page number to query for.
+         * @param {string} [type] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async balanceTransactions(currency: Currency, startTime?: string, endTime?: string, perPage?: number, page?: number, type?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceTransactionList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.balanceTransactions(currency, startTime, endTime, perPage, page, type, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SettlementsApi.balanceTransactions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * Retrieves a paginated list of settlements from most-recent to least-recent. Pagination can be configured with `page` and `per_page` parameters.
          * @summary Settlement: Index
@@ -313,6 +435,19 @@ export const SettlementsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listSettlements(startTime, endTime, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SettlementsApi.listSettlements']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Given a currency, view the unsettled balance of the currently authenticated merchant.
+         * @summary Balance: Show
+         * @param {Currency} currency 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async showBalance(currency: Currency, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShowBalance200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.showBalance(currency, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SettlementsApi.showBalance']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -368,14 +503,14 @@ export const SettlementsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieves a single ledger transaction by its UUID for the given currency.
+         * Retrieves a single ledger transaction by its UUID for the given currency. Will return one entry per line item of the transaction.
          * @summary Balance: Transaction
          * @param {Currency} currency 
          * @param {string} transactionUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async showTransaction(currency: Currency, transactionUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Transaction>> {
+        async showTransaction(currency: Currency, transactionUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Transaction>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.showTransaction(currency, transactionUuid, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SettlementsApi.showTransaction']?.[localVarOperationServerIndex]?.url;
@@ -386,11 +521,20 @@ export const SettlementsApiFp = function(configuration?: Configuration) {
 
 /**
  * SettlementsApi - factory interface
- * @export
  */
 export const SettlementsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = SettlementsApiFp(configuration)
     return {
+        /**
+         * Given a currency, view the ledger transactions of the currently authenticated merchant. Will split ledger transactions into line items when appropriate.
+         * @summary Balance: Transactions
+         * @param {SettlementsApiBalanceTransactionsRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        balanceTransactions(requestParameters: SettlementsApiBalanceTransactionsRequest, options?: RawAxiosRequestConfig): AxiosPromise<BalanceTransactionList> {
+            return localVarFp.balanceTransactions(requestParameters.currency, requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.type, options).then((request) => request(axios, basePath));
+        },
         /**
          * Retrieves a paginated list of settlements from most-recent to least-recent. Pagination can be configured with `page` and `per_page` parameters.
          * @summary Settlement: Index
@@ -400,6 +544,16 @@ export const SettlementsApiFactory = function (configuration?: Configuration, ba
          */
         listSettlements(requestParameters: SettlementsApiListSettlementsRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<SettlementList> {
             return localVarFp.listSettlements(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Given a currency, view the unsettled balance of the currently authenticated merchant.
+         * @summary Balance: Show
+         * @param {SettlementsApiShowBalanceRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        showBalance(requestParameters: SettlementsApiShowBalanceRequest, options?: RawAxiosRequestConfig): AxiosPromise<ShowBalance200Response> {
+            return localVarFp.showBalance(requestParameters.currency, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a single settlement by its `id`, including a breakdown of payments, refunds, fees, corrections, and disbursements.
@@ -442,147 +596,151 @@ export const SettlementsApiFactory = function (configuration?: Configuration, ba
             return localVarFp.showSettlementXLS(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a single ledger transaction by its UUID for the given currency.
+         * Retrieves a single ledger transaction by its UUID for the given currency. Will return one entry per line item of the transaction.
          * @summary Balance: Transaction
          * @param {SettlementsApiShowTransactionRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        showTransaction(requestParameters: SettlementsApiShowTransactionRequest, options?: RawAxiosRequestConfig): AxiosPromise<Transaction> {
+        showTransaction(requestParameters: SettlementsApiShowTransactionRequest, options?: RawAxiosRequestConfig): AxiosPromise<Array<Transaction>> {
             return localVarFp.showTransaction(requestParameters.currency, requestParameters.transactionUuid, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for listSettlements operation in SettlementsApi.
- * @export
- * @interface SettlementsApiListSettlementsRequest
+ * Request parameters for balanceTransactions operation in SettlementsApi.
  */
-export interface SettlementsApiListSettlementsRequest {
+export interface SettlementsApiBalanceTransactionsRequest {
+    readonly currency: Currency
+
     /**
      * Query for records created after this time.
-     * @type {string}
-     * @memberof SettlementsApiListSettlements
      */
     readonly startTime?: string
 
     /**
      * Query for records created before this time.
-     * @type {string}
-     * @memberof SettlementsApiListSettlements
      */
     readonly endTime?: string
 
     /**
      * How many objects per page.
-     * @type {number}
-     * @memberof SettlementsApiListSettlements
      */
     readonly perPage?: number
 
     /**
      * Page number to query for.
-     * @type {number}
-     * @memberof SettlementsApiListSettlements
+     */
+    readonly page?: number
+
+    readonly type?: string
+}
+
+/**
+ * Request parameters for listSettlements operation in SettlementsApi.
+ */
+export interface SettlementsApiListSettlementsRequest {
+    /**
+     * Query for records created after this time.
+     */
+    readonly startTime?: string
+
+    /**
+     * Query for records created before this time.
+     */
+    readonly endTime?: string
+
+    /**
+     * How many objects per page.
+     */
+    readonly perPage?: number
+
+    /**
+     * Page number to query for.
      */
     readonly page?: number
 }
 
 /**
+ * Request parameters for showBalance operation in SettlementsApi.
+ */
+export interface SettlementsApiShowBalanceRequest {
+    readonly currency: Currency
+}
+
+/**
  * Request parameters for showSettlement operation in SettlementsApi.
- * @export
- * @interface SettlementsApiShowSettlementRequest
  */
 export interface SettlementsApiShowSettlementRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SettlementsApiShowSettlement
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showSettlementCSV operation in SettlementsApi.
- * @export
- * @interface SettlementsApiShowSettlementCSVRequest
  */
 export interface SettlementsApiShowSettlementCSVRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SettlementsApiShowSettlementCSV
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showSettlementPDF operation in SettlementsApi.
- * @export
- * @interface SettlementsApiShowSettlementPDFRequest
  */
 export interface SettlementsApiShowSettlementPDFRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SettlementsApiShowSettlementPDF
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showSettlementXLS operation in SettlementsApi.
- * @export
- * @interface SettlementsApiShowSettlementXLSRequest
  */
 export interface SettlementsApiShowSettlementXLSRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SettlementsApiShowSettlementXLS
-     */
     readonly id: string
 }
 
 /**
  * Request parameters for showTransaction operation in SettlementsApi.
- * @export
- * @interface SettlementsApiShowTransactionRequest
  */
 export interface SettlementsApiShowTransactionRequest {
-    /**
-     * 
-     * @type {Currency}
-     * @memberof SettlementsApiShowTransaction
-     */
     readonly currency: Currency
 
-    /**
-     * 
-     * @type {string}
-     * @memberof SettlementsApiShowTransaction
-     */
     readonly transactionUuid: string
 }
 
 /**
  * SettlementsApi - object-oriented interface
- * @export
- * @class SettlementsApi
- * @extends {BaseAPI}
  */
 export class SettlementsApi extends BaseAPI {
+    /**
+     * Given a currency, view the ledger transactions of the currently authenticated merchant. Will split ledger transactions into line items when appropriate.
+     * @summary Balance: Transactions
+     * @param {SettlementsApiBalanceTransactionsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public balanceTransactions(requestParameters: SettlementsApiBalanceTransactionsRequest, options?: RawAxiosRequestConfig) {
+        return SettlementsApiFp(this.configuration).balanceTransactions(requestParameters.currency, requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, requestParameters.type, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Retrieves a paginated list of settlements from most-recent to least-recent. Pagination can be configured with `page` and `per_page` parameters.
      * @summary Settlement: Index
      * @param {SettlementsApiListSettlementsRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public listSettlements(requestParameters: SettlementsApiListSettlementsRequest = {}, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).listSettlements(requestParameters.startTime, requestParameters.endTime, requestParameters.perPage, requestParameters.page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Given a currency, view the unsettled balance of the currently authenticated merchant.
+     * @summary Balance: Show
+     * @param {SettlementsApiShowBalanceRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public showBalance(requestParameters: SettlementsApiShowBalanceRequest, options?: RawAxiosRequestConfig) {
+        return SettlementsApiFp(this.configuration).showBalance(requestParameters.currency, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -591,7 +749,6 @@ export class SettlementsApi extends BaseAPI {
      * @param {SettlementsApiShowSettlementRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public showSettlement(requestParameters: SettlementsApiShowSettlementRequest, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).showSettlement(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -603,7 +760,6 @@ export class SettlementsApi extends BaseAPI {
      * @param {SettlementsApiShowSettlementCSVRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public showSettlementCSV(requestParameters: SettlementsApiShowSettlementCSVRequest, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).showSettlementCSV(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -615,7 +771,6 @@ export class SettlementsApi extends BaseAPI {
      * @param {SettlementsApiShowSettlementPDFRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public showSettlementPDF(requestParameters: SettlementsApiShowSettlementPDFRequest, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).showSettlementPDF(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
@@ -627,19 +782,17 @@ export class SettlementsApi extends BaseAPI {
      * @param {SettlementsApiShowSettlementXLSRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public showSettlementXLS(requestParameters: SettlementsApiShowSettlementXLSRequest, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).showSettlementXLS(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Retrieves a single ledger transaction by its UUID for the given currency.
+     * Retrieves a single ledger transaction by its UUID for the given currency. Will return one entry per line item of the transaction.
      * @summary Balance: Transaction
      * @param {SettlementsApiShowTransactionRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SettlementsApi
      */
     public showTransaction(requestParameters: SettlementsApiShowTransactionRequest, options?: RawAxiosRequestConfig) {
         return SettlementsApiFp(this.configuration).showTransaction(requestParameters.currency, requestParameters.transactionUuid, options).then((request) => request(this.axios, this.basePath));

@@ -14,17 +14,7 @@
 
 
 
-/**
- * 
- * @export
- * @interface CancelDisbursementRequest
- */
 export interface CancelDisbursementRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CancelDisbursementRequest
-     */
     'cancel_reason': string;
 }
 

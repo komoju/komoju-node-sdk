@@ -16,160 +16,106 @@
 
 /**
  * 
- * @export
- * @interface ResponsePaymentDetailsBankTransfer
  */
 export interface ResponsePaymentDetailsBankTransfer {
     /**
      * Payment method type.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'type': ResponsePaymentDetailsBankTransferTypeEnum;
     /**
      * Customer\'s email address. Will be used for fraud prevention, payment instruction, and payment receipt.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'email': string;
     /**
      * Order identifier for this bank transfer.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'order_id'?: string;
     /**
      * Name of the bank to transfer funds to.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'bank_name'?: string;
     /**
      * Name of the bank branch.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'account_branch_name'?: string;
     /**
      * Bank account number to transfer funds to.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'account_number'?: string;
     /**
      * Type of bank account.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'account_type'?: string;
     /**
      * Name of the bank account holder.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'account_name'?: string;
     /**
      * URL with payment instructions for the customer.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'instructions_url'?: string;
     /**
      * Deadline by which the bank transfer must be completed.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'payment_deadline'?: string;
     /**
      * Shipping address name. This is the recipient\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_name'?: string;
     /**
      * Shipping address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_line1'?: string;
     /**
      * Shipping address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_line2'?: string;
     /**
      * Shipping address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_city'?: string;
     /**
      * Shipping address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_state'?: string;
     /**
      * Shipping address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_zip'?: string;
     /**
      * Shipping address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'shipping_address_country'?: string;
     /**
      * Billing address name. This is the paying customer\'s name.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_name'?: string;
     /**
      * Billing address line 1.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_line1'?: string;
     /**
      * Billing address line 2.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_line2'?: string;
     /**
      * Billing address city.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_city'?: string;
     /**
      * Billing address state.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_state'?: string;
     /**
      * Billing address ZIP code.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_zip'?: string;
     /**
      * Billing address country.
-     * @type {string}
-     * @memberof ResponsePaymentDetailsBankTransfer
      */
     'billing_address_country'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ResponsePaymentDetailsBankTransferTypeEnum {
     BankTransfer = 'bank_transfer'
 }

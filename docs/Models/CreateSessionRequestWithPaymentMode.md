@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **mode** | **String** | In &#x60;payment&#x60; mode, a payment will be created after customer has completed the session. | [default to null] |
+| **mode** | **String** | In &#x60;payment&#x60; mode, a payment will be created after customer has completed the session.  &#x60;payment&#x60; is the default mode and may be omitted. | [optional] [default to null] |
+| **amount** | **Integer** | Amount greater than 0, in the lowest denomination of the currency (e.g. cents for USD). | [default to null] |
 | **return\_url** | **String** | Specify the URL where user will be redirected to after they have completed or aborted the session. A &#x60;session_id&#x60; will be appended to this URL as a query parameter. | [optional] [default to null] |
-| **amount** | **Integer** | Amount greater than or equal to 0, in the lowest denomination of the currency (e.g. cents for USD). | [default to null] |
 | **currency** | [**Currency**](Currency.md) |  | [default to null] |
 | **email** | **String** | Customer&#39;s email address. | [optional] [default to null] |
 | **expires\_in\_seconds** | **Integer** | Time in seconds until the session expires after being created.  The default value and upper limit are 86,400 seconds (24 hours). | [optional] [default to null] |

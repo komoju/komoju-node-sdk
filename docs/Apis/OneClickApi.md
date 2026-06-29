@@ -20,7 +20,7 @@ const api = new OneClickApi(config);
 
 ## deleteExternalCustomer
 
-> DeleteExternalCustomerResponse deleteExternalCustomer(id)
+> DeleteExternalCustomer_200_response deleteExternalCustomer(id)
 
 External Customer: Destroy
 
@@ -43,7 +43,7 @@ console.log(result.data);
 
 ### Return type
 
-[**DeleteExternalCustomerResponse**](../Models/DeleteExternalCustomerResponse.md)
+[**DeleteExternalCustomer_200_response**](../Models/DeleteExternalCustomer_200_response.md)
 
 ### HTTP request headers
 

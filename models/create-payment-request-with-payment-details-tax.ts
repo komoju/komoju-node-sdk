@@ -20,7 +20,6 @@ import type { Auto } from './auto';
 /**
  * @type CreatePaymentRequestWithPaymentDetailsTax
  * The tax amount. Defaults to the highest consumption tax rate in Japan if omitted or set to `auto`.  It\'s recommended to set to `0` unless you want the tax amount to be tracked on KOMOJU.
- * @export
  */
 export type CreatePaymentRequestWithPaymentDetailsTax = Auto | number;
 
