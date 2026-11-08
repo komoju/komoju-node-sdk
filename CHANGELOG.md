@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped the `axios` dependency floor from `^1.16.1` to `^1.21.0` to pick up the fixes for the advisories fixed in axios 1.20.0 and later; this is also the dependency floor for consumers installing the package.
+
+- Updated the CI and release workflows: `actions/checkout` 6.0.2 → 7.0.1, `actions/setup-node` 6.4.0 → 7.0.0, `actions/upload-artifact` 7.0.1 → 7.0.2, and `pnpm/action-setup` 6.0.8 → 6.1.1 (pinned to commit `73e46992e05b19abd31f2f3c20e0e7370d762115`).
+
 ## [1.0.0] - 2026-06-29
 
 Targets KOMOJU API version `2025-01-28`.
