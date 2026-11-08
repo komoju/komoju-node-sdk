@@ -8,6 +8,8 @@
 
 - Updated the CI and release workflows: `actions/checkout` 6.0.2 → 7.0.1, `actions/setup-node` 6.4.0 → 7.0.0, `actions/upload-artifact` 7.0.1 → 7.0.2, and `pnpm/action-setup` 6.0.8 → 6.1.1 (pinned to commit `73e46992e05b19abd31f2f3c20e0e7370d762115`).
 
+- Moved the CI and release jobs off the internal `[self-hosted, beta, public-release]` runner label to GitHub-hosted `ubuntu-latest`, per the rule that public repositories must not use KOMOJU self-hosted runners. Job permissions, pnpm 10, Node 24, and publishing behaviour are unchanged.
+
 ## [1.0.0] - 2026-06-29
 
 Targets KOMOJU API version `2025-01-28`.
