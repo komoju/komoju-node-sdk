@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, beta, public-release]
+    runs-on: [self-hosted, public-release]
     permissions:
       contents: read
     steps:
@@ -54,7 +54,7 @@ jobs:
 
   github-release:
     needs: publish-npm
-    runs-on: [self-hosted, beta, public-release]
+    runs-on: [self-hosted, public-release]
     environment: release
     permissions:
       contents: write
